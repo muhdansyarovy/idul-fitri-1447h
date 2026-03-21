@@ -484,9 +484,8 @@ var CUR_THEME=0;
         // Sender
         var y7=y6+textH*0.14;
         ex.fillStyle=THEMES[CUR_THEME].tm;ex.globalAlpha=0.85;ex.font='500 '+Math.round(15*sc)+'px Cormorant Garamond';
-        ex.fillText('M U H D A N   S Y A R O V Y',ew/2,y7);
-        ex.globalAlpha=1;ex.fillStyle=THEMES[CUR_THEME].tl;ex.font='300 '+Math.round(12*sc)+'px Cormorant Garamond';
-        ex.fillText('&  K E L U A R G A',ew/2,y7+28*sc);
+        ex.fillText('M U H D A N   S Y A R O V Y   &   K E L U A R G A',ew/2,y7);
+        ex.globalAlpha=1;
         // Download
         var mime=fmt==='png'?'image/png':'image/jpeg';
         ec.toBlob(function(blob){var u=URL.createObjectURL(blob);var a=document.createElement('a');a.href=u;a.download='idul-fitri-1447h.'+fmt;a.click();URL.revokeObjectURL(u);PRG.className='prg';},mime,0.95);
@@ -529,9 +528,7 @@ var CUR_THEME=0;
       gx.fillText('"Semoga Allah menerima amalan',gw/2,y6);gx.fillText('dari kami dan darimu sekalian"',gw/2,y6+22*sc);
       var y7=y6+textH*0.14;
       gx.fillStyle=THEMES[CUR_THEME].tm;gx.globalAlpha=0.85;gx.font='500 '+Math.round(15*sc)+'px Cormorant Garamond';
-      gx.fillText('M U H D A N   S Y A R O V Y',gw/2,y7);gx.globalAlpha=1;
-      gx.fillStyle=THEMES[CUR_THEME].tl;gx.font='300 '+Math.round(12*sc)+'px Cormorant Garamond';
-      gx.fillText('&  K E L U A R G A',gw/2,y7+28*sc);
+      gx.fillText('M U H D A N   S Y A R O V Y   &   K E L U A R G A',gw/2,y7);gx.globalAlpha=1;
       fdata.push(gx.getImageData(0,0,gw,gh));
       f++;
       if(f<frames){setTimeout(grab,120);}
