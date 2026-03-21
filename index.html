@@ -299,8 +299,6 @@ var CUR_THEME=0;
   function drawKaaba(){
     var kw=40,kh=45,kx=cx-kw/2-2,ky=cy-kh/2-13;
     x.save();
-    // Shadow
-    x.fillStyle='rgba(0,0,0,0.05)';x.beginPath();x.ellipse(cx,cy+kh/2+4,kw*0.6,5.5,0,0,Math.PI*2);x.fill();
     // Front
     x.fillStyle=KA_BODY;x.globalAlpha=0.92;x.fillRect(kx,ky,kw,kh);
     // Top
