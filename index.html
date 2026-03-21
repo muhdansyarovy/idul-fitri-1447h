@@ -127,6 +127,7 @@ dT();
 function sT(i){var t=TH[i],s=P.style;s.setProperty('--a1',t.a1);s.setProperty('--a2',t.a2);s.setProperty('--tm',t.tm);s.setProperty('--ts',t.ts);s.setProperty('--tl',t.tl);KI.src=TI[i];TB.textContent=t.name;TB.classList.add('sh');clearTimeout(bt);bt=setTimeout(function(){TB.classList.remove('sh');},1800);}
 P.addEventListener('click',function(e){var r=P.getBoundingClientRect(),rip=document.createElement('div');rip.className='rp';rip.style.left=(e.clientX-r.left-40)+'px';rip.style.top=(e.clientY-r.top-40)+'px';rip.style.width='80px';rip.style.height='80px';P.appendChild(rip);setTimeout(function(){rip.remove();},800);if(zoomed){P.classList.remove('zm');zoomed=false;cur=0;sT(cur);return;}if(cur===TH.length-1){P.classList.add('zm');zoomed=true;TB.textContent='Tawaf';TB.classList.add('sh');clearTimeout(bt);bt=setTimeout(function(){TB.classList.remove('sh');},1800);}else{cur=(cur+1)%TH.length;sT(cur);}});
 
+try{
 /* ================================================================
 HIGH-QUALITY EXPORT ENGINE
 PNG/JPG: 1440 x 2560 (9:16)
@@ -166,10 +167,11 @@ ex.strokeRect(16*sc, 16*sc, ew-32*sc, eh-32*sc); ex.globalAlpha = 1;
 /* Corners */
 var cm = 20*sc;
 ex.strokeStyle = t.a1; ex.globalAlpha = 0.3; ex.lineWidth = 1*sc;
-[[16*sc,16*sc,1,0,0,1],[ew-16*sc,16*sc,-1,0,0,1],[16*sc,eh-16*sc,1,0,0,-1],[ew-16*sc,eh-16*sc,-1,0,0,-1]].forEach(function(c){
+var cns=[[16*sc,16*sc,1,0,0,1],[ew-16*sc,16*sc,-1,0,0,1],[16*sc,eh-16*sc,1,0,0,-1],[ew-16*sc,eh-16*sc,-1,0,0,-1]];
+for(var ci=0;ci<cns.length;ci++){var c=cns[ci];
 ex.beginPath();ex.moveTo(c[0],c[1]);ex.lineTo(c[0]+cm*c[2],c[1]);ex.stroke();
 ex.beginPath();ex.moveTo(c[0],c[1]);ex.lineTo(c[0],c[1]+cm*c[5]);ex.stroke();
-});
+}
 ex.globalAlpha = 1;
 
 /* Tawaf area - render directly at export scale */
@@ -462,6 +464,8 @@ return output;
 window.closeModal=function(){document.getElementById(‘mbg’).classList.remove(‘open’);var p=document.getElementById(‘prg’);p.className=‘prg’;p.textContent=’’;};
 document.getElementById(‘expBtn’).addEventListener(‘click’,function(e){e.stopPropagation();document.getElementById(‘mbg’).classList.add(‘open’);});
 document.getElementById(‘mbg’).addEventListener(‘click’,function(e){if(e.target===this)closeModal();});
+
+}catch(exportErr){console.log(‘Export init error:’,exportErr);}
 })();
 </script>
 
