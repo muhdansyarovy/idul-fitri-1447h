@@ -3,15 +3,15 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="theme-color" content="#FAFAF7">
 <title>Selamat Hari Raya Idul Fitri 1447 H</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{--a1:#C4A96A;--a2:#8B9E7C;--tm:#5C4A28;--ts:#9E8E7E;--tl:#C4B5A5}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#E8E4DF;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Cormorant Garamond',serif;padding:20px}
-.poster{width:540px;min-height:960px;background:#FAFAF7;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px 40px;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent}
-.poster>*{position:relative;z-index:2}
+html,body{height:100%;overflow:hidden}body{background:#FAFAF7;display:flex;align-items:center;justify-content:center;min-height:100vh;min-height:100dvh;font-family:'Cormorant Garamond',serif;padding:0;margin:0}
+.poster{width:100%;max-width:540px;min-height:100vh;min-height:100dvh;background:#FAFAF7;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px 40px;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent}
+.poster>*{position:relative;z-index:2}.poster{padding-top:max(44px,env(safe-area-inset-top,44px));padding-bottom:max(32px,env(safe-area-inset-bottom,32px))}
 #BC{position:absolute;inset:0;z-index:0;pointer-events:none;width:100%;height:100%}
 .fb{position:absolute;inset:16px;border:0.5px solid var(--a1);opacity:0.15;pointer-events:none;z-index:1}
 .cn{position:absolute;width:20px;height:20px;z-index:3}.cn::before,.cn::after{content:'';position:absolute;background:var(--a1);opacity:0.3;transition:background .8s}
@@ -32,7 +32,7 @@ body{background:#E8E4DF;display:flex;align-items:center;justify-content:center;m
 .ai{font-size:12.5px;font-weight:400;font-style:italic;color:var(--ts);text-align:center;line-height:1.7;max-width:300px;margin-bottom:40px;animation:fu 1.2s ease-out 1.2s both;transition:color .8s,opacity .6s}
 .sn{font-size:14px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--tm);animation:fu 1.2s ease-out 1.4s both;transition:color .8s,opacity .6s;opacity:.85}
 .ss{font-size:11px;font-weight:300;letter-spacing:2px;color:var(--tl);margin-top:4px;text-transform:uppercase;animation:fu 1.2s ease-out 1.5s both;transition:color .8s,opacity .6s}
-.th{position:absolute;bottom:6px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--tl);opacity:0;animation:hp 4s ease-in-out 4s infinite}
+.th{position:absolute;bottom:max(6px,env(safe-area-inset-bottom,6px));font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--tl);opacity:0;animation:hp 4s ease-in-out 4s infinite}
 @keyframes hp{0%,100%{opacity:0}15%,85%{opacity:.45}}
 .tb{position:absolute;top:24px;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--a1);opacity:0;transition:opacity .3s;pointer-events:none;z-index:11}.tb.sh{opacity:.7}
 .rp{position:absolute;border-radius:50%;background:var(--a1);opacity:.12;transform:scale(0);animation:ra .8s ease-out forwards;pointer-events:none;z-index:10}
@@ -42,7 +42,7 @@ body{background:#E8E4DF;display:flex;align-items:center;justify-content:center;m
 @keyframes fi{from{opacity:0}to{opacity:1}}
 .poster.zm .twc{transform:scale(2.8);margin-bottom:180px;margin-top:80px}
 .poster.zm .gt,.poster.zm .kt,.poster.zm .hy,.poster.zm .ba,.poster.zm .at,.poster.zm .ai,.poster.zm .sn,.poster.zm .ss,.poster.zm .th{opacity:0!important;pointer-events:none}
-.exp-btn{position:fixed;bottom:20px;right:20px;width:48px;height:48px;border-radius:50%;background:#2C2C2C;color:#fff;border:none;font-size:20px;cursor:pointer;z-index:100;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,.15)}
+.exp-btn{position:fixed;bottom:max(20px,env(safe-area-inset-bottom,0px));right:20px;width:48px;height:48px;border-radius:50%;background:#2C2C2C;color:#fff;border:none;font-size:20px;cursor:pointer;z-index:100;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,.15)}
 .mbg{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:none;align-items:center;justify-content:center}.mbg.open{display:flex}
 .mdl{background:#fff;border-radius:16px;padding:32px;width:320px;text-align:center}
 .mdl h3{font-size:18px;margin-bottom:6px;color:#2C2C2C}.mdl p{font-size:12px;color:#9E8E7E;margin-bottom:20px}
@@ -53,7 +53,7 @@ body{background:#E8E4DF;display:flex;align-items:center;justify-content:center;m
 .mbs button small{font-size:11px;color:#9E8E7E}
 .prg{display:none;margin-top:14px;font-size:12px;color:#5C4A28;padding:8px 16px;background:#F5F0E8;border-radius:8px}.prg.show{display:block}
 .mcl{margin-top:16px;padding:10px;border:none;background:none;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#9E8E7E;cursor:pointer}
-@media(max-width:580px){body{padding:10px}.poster{width:100%;min-height:94vh;padding:30px 18px}.twc{width:310px;height:260px}.kt{width:280px}.at{font-size:22px}}
+@media(max-width:580px){body{padding:0}.poster{width:100%;min-height:100vh;min-height:100dvh;padding:28px 18px;border-radius:0}.twc{width:88vw;height:68vw;max-width:380px;max-height:310px}.kt{width:80vw;max-width:340px}.at{font-size:22px}.fb{inset:10px}.cn{display:none}}
 </style>
 </head>
 <body>
@@ -335,7 +335,7 @@ var CUR_THEME=0;
         ex.fillStyle='#FAFAF7';ex.fillRect(0,0,ew,eh);
         // Draw tawaf canvas scaled
         var sc=ew/540;
-        var twW=380*sc,twH=310*sc,twX=(ew-twW)/2,twY=eh*0.08;
+        var twW=380*sc,twH=310*sc,twX=(ew-twW)/2,twY=eh*0.05;
         ex.drawImage(TC,twX,twY,twW,twH);
         // BG particles from BC
         var bc=document.getElementById('BC');
@@ -390,9 +390,9 @@ var CUR_THEME=0;
       var sc=gw/540;
       gx.drawImage(document.getElementById('BC'),0,0,gw,gh);
       var twW=380*sc,twH=310*sc;
-      gx.drawImage(TC,(gw-twW)/2,gh*0.08,twW,twH);
+      gx.drawImage(TC,(gw-twW)/2,gh*0.05,twW,twH);
       // Text overlay
-      gx.textAlign='center';var tY=gh*0.08+twH+40*sc;
+      gx.textAlign='center';var tY=gh*0.05+twH+40*sc;
       gx.fillStyle=THEMES[CUR_THEME].ts;gx.font='400 '+Math.round(13*sc)+'px Cormorant Garamond';
       gx.fillText('S E L A M A T   H A R I   R A Y A',gw/2,tY);
       var imgW=340*sc,imgH=imgW*(KI.naturalHeight/KI.naturalWidth||0.33);
