@@ -333,45 +333,56 @@ var CUR_THEME=0;
         var ew=1440,eh=3120,ec=document.createElement('canvas');ec.width=ew;ec.height=eh;
         var ex=ec.getContext('2d');
         ex.fillStyle='#FAFAF7';ex.fillRect(0,0,ew,eh);
-        // Draw tawaf canvas scaled
         var sc=ew/540;
-        var twW=380*sc,twH=310*sc,twX=(ew-twW)/2,twY=eh*0.05;
-        ex.drawImage(TC,twX,twY,twW,twH);
-        // BG particles from BC
+        // BG particles
         var bc=document.getElementById('BC');
-        ex.globalAlpha=1;ex.drawImage(bc,0,0,ew,eh);
-        // Re-draw tawaf on top
+        ex.drawImage(bc,0,0,ew,eh);
+        // Tawaf - vertically centered in top 45% of canvas
+        var twW=400*sc,twH=330*sc,twX=(ew-twW)/2,twY=eh*0.07;
         ex.drawImage(TC,twX,twY,twW,twH);
-        // Frame
+        // Frame border
         ex.strokeStyle=THEMES[CUR_THEME].a1;ex.globalAlpha=0.15;ex.lineWidth=1.5;
         ex.strokeRect(32,32,ew-64,eh-64);ex.globalAlpha=1;
-        // Text
-        var tY=twY+twH+40*sc;
-        ex.textAlign='center';ex.fillStyle=THEMES[CUR_THEME].ts;
-        ex.font='400 '+Math.round(13*sc)+'px Cormorant Garamond';
-        ex.fillText('S E L A M A T   H A R I   R A Y A',ew/2,tY);
-        var imgW=340*sc,imgH=imgW*(KI.naturalHeight/KI.naturalWidth||0.33);
-        ex.drawImage(KI,(ew-imgW)/2,tY+12*sc,imgW,imgH);
-        var hyY=tY+12*sc+imgH+24*sc;
-        ex.fillStyle=THEMES[CUR_THEME].a1;ex.font='300 '+Math.round(17*sc)+'px Cormorant Garamond';
-        ex.fillText('1  4  4  7   H',ew/2,hyY);
-        var baY=hyY+44*sc;
+        // Text - spread evenly in bottom 55%
+        var textTop=twY+twH+eh*0.03;
+        var textBot=eh*0.92;
+        var textH=textBot-textTop;
+        ex.textAlign='center';
+        // Selamat Hari Raya
+        var y1=textTop+textH*0.05;
+        ex.fillStyle=THEMES[CUR_THEME].ts;
+        ex.font='400 '+Math.round(14*sc)+'px Cormorant Garamond';
+        ex.fillText('S E L A M A T   H A R I   R A Y A',ew/2,y1);
+        // Idul Fitri image
+        var imgW=380*sc,imgH=imgW*(KI.naturalHeight/KI.naturalWidth||0.33);
+        var y2=y1+textH*0.02;
+        ex.drawImage(KI,(ew-imgW)/2,y2,imgW,imgH);
+        // 1447 H
+        var y3=y2+imgH+textH*0.04;
+        ex.fillStyle=THEMES[CUR_THEME].a1;ex.font='300 '+Math.round(18*sc)+'px Cormorant Garamond';
+        ex.fillText('1  4  4  7   H',ew/2,y3);
+        // Botanical accent
+        var y4=y3+textH*0.06;
         ex.strokeStyle=THEMES[CUR_THEME].a2;ex.globalAlpha=0.5;ex.lineWidth=sc;
-        ex.beginPath();ex.moveTo(ew/2-74*sc,baY);ex.lineTo(ew/2-14*sc,baY);ex.stroke();
-        ex.beginPath();ex.moveTo(ew/2+14*sc,baY);ex.lineTo(ew/2+74*sc,baY);ex.stroke();
+        ex.beginPath();ex.moveTo(ew/2-74*sc,y4);ex.lineTo(ew/2-14*sc,y4);ex.stroke();
+        ex.beginPath();ex.moveTo(ew/2+14*sc,y4);ex.lineTo(ew/2+74*sc,y4);ex.stroke();
         ex.globalAlpha=0.7;ex.fillStyle=THEMES[CUR_THEME].a2;
-        ex.beginPath();ex.arc(ew/2,baY,5*sc,0,Math.PI*2);ex.fill();ex.globalAlpha=1;
-        var arY=baY+55*sc;
-        ex.fillStyle=THEMES[CUR_THEME].tm;ex.font='400 '+Math.round(26*sc)+'px Amiri';
-        ex.fillText('\u062A\u064E\u0642\u064E\u0628\u0651\u064E\u0644\u064E \u0627\u0644\u0644\u0651\u064E\u0647\u064F \u0645\u0650\u0646\u0651\u064E\u0627 \u0648\u064E\u0645\u0650\u0646\u0652\u0643\u064F\u0645\u0652',ew/2,arY);
-        var aiY=arY+34*sc;
-        ex.fillStyle=THEMES[CUR_THEME].ts;ex.font='italic 400 '+Math.round(12.5*sc)+'px Cormorant Garamond';
-        ex.fillText('"Semoga Allah menerima amalan',ew/2,aiY);ex.fillText('dari kami dan darimu sekalian"',ew/2,aiY+20*sc);
-        var snY=aiY+75*sc;
-        ex.fillStyle=THEMES[CUR_THEME].tm;ex.globalAlpha=0.85;ex.font='500 '+Math.round(14*sc)+'px Cormorant Garamond';
-        ex.fillText('M U H D A N   S Y A R O V Y',ew/2,snY);
-        ex.globalAlpha=1;ex.fillStyle=THEMES[CUR_THEME].tl;ex.font='300 '+Math.round(11*sc)+'px Cormorant Garamond';
-        ex.fillText('&  K E L U A R G A',ew/2,snY+26*sc);
+        ex.beginPath();ex.arc(ew/2,y4,5*sc,0,Math.PI*2);ex.fill();ex.globalAlpha=1;
+        // Arabic doa
+        var y5=y4+textH*0.1;
+        ex.fillStyle=THEMES[CUR_THEME].tm;ex.font='400 '+Math.round(28*sc)+'px Amiri';
+        ex.fillText('\u062A\u064E\u0642\u064E\u0628\u0651\u064E\u0644\u064E \u0627\u0644\u0644\u0651\u064E\u0647\u064F \u0645\u0650\u0646\u0651\u064E\u0627 \u0648\u064E\u0645\u0650\u0646\u0652\u0643\u064F\u0645\u0652',ew/2,y5);
+        // Translation
+        var y6=y5+textH*0.06;
+        ex.fillStyle=THEMES[CUR_THEME].ts;ex.font='italic 400 '+Math.round(13*sc)+'px Cormorant Garamond';
+        ex.fillText('"Semoga Allah menerima amalan',ew/2,y6);
+        ex.fillText('dari kami dan darimu sekalian"',ew/2,y6+22*sc);
+        // Sender
+        var y7=y6+textH*0.14;
+        ex.fillStyle=THEMES[CUR_THEME].tm;ex.globalAlpha=0.85;ex.font='500 '+Math.round(15*sc)+'px Cormorant Garamond';
+        ex.fillText('M U H D A N   S Y A R O V Y',ew/2,y7);
+        ex.globalAlpha=1;ex.fillStyle=THEMES[CUR_THEME].tl;ex.font='300 '+Math.round(12*sc)+'px Cormorant Garamond';
+        ex.fillText('&  K E L U A R G A',ew/2,y7+28*sc);
         // Download
         var mime=fmt==='png'?'image/png':'image/jpeg';
         ec.toBlob(function(blob){var u=URL.createObjectURL(blob);var a=document.createElement('a');a.href=u;a.download='idul-fitri-1447h.'+fmt;a.click();URL.revokeObjectURL(u);PRG.className='prg';},mime,0.95);
@@ -389,25 +400,34 @@ var CUR_THEME=0;
       gx.fillStyle='#FAFAF7';gx.fillRect(0,0,gw,gh);
       var sc=gw/540;
       gx.drawImage(document.getElementById('BC'),0,0,gw,gh);
-      var twW=380*sc,twH=310*sc;
-      gx.drawImage(TC,(gw-twW)/2,gh*0.05,twW,twH);
+      var twW=400*sc,twH=330*sc;
+      gx.drawImage(TC,(gw-twW)/2,gh*0.07,twW,twH);
       // Text overlay
-      gx.textAlign='center';var tY=gh*0.05+twH+40*sc;
-      gx.fillStyle=THEMES[CUR_THEME].ts;gx.font='400 '+Math.round(13*sc)+'px Cormorant Garamond';
+      gx.textAlign='center';var textTop=gh*0.05+twH+gh*0.03;var textBot=gh*0.92;var textH=textBot-textTop;var tY=textTop+textH*0.05;
+      gx.fillStyle=THEMES[CUR_THEME].ts;gx.font='400 '+Math.round(14*sc)+'px Cormorant Garamond';
       gx.fillText('S E L A M A T   H A R I   R A Y A',gw/2,tY);
-      var imgW=340*sc,imgH=imgW*(KI.naturalHeight/KI.naturalWidth||0.33);
-      gx.drawImage(KI,(gw-imgW)/2,tY+12*sc,imgW,imgH);
-      gx.fillStyle=THEMES[CUR_THEME].a1;gx.font='300 '+Math.round(17*sc)+'px Cormorant Garamond';
-      gx.fillText('1  4  4  7   H',gw/2,tY+12*sc+imgH+24*sc);
-      var baY=tY+12*sc+imgH+68*sc;
-      gx.fillStyle=THEMES[CUR_THEME].tm;gx.font='400 '+Math.round(26*sc)+'px Amiri';
-      gx.fillText('\u062A\u064E\u0642\u064E\u0628\u0651\u064E\u0644\u064E \u0627\u0644\u0644\u0651\u064E\u0647\u064F \u0645\u0650\u0646\u0651\u064E\u0627 \u0648\u064E\u0645\u0650\u0646\u0652\u0643\u064F\u0645\u0652',gw/2,baY+55*sc);
-      gx.fillStyle=THEMES[CUR_THEME].ts;gx.font='italic 400 '+Math.round(12.5*sc)+'px Cormorant Garamond';
-      gx.fillText('"Semoga Allah menerima amalan',gw/2,baY+89*sc);gx.fillText('dari kami dan darimu sekalian"',gw/2,baY+109*sc);
-      gx.fillStyle=THEMES[CUR_THEME].tm;gx.globalAlpha=0.85;gx.font='500 '+Math.round(14*sc)+'px Cormorant Garamond';
-      gx.fillText('M U H D A N   S Y A R O V Y',gw/2,baY+184*sc);gx.globalAlpha=1;
-      gx.fillStyle=THEMES[CUR_THEME].tl;gx.font='300 '+Math.round(11*sc)+'px Cormorant Garamond';
-      gx.fillText('&  K E L U A R G A',gw/2,baY+210*sc);
+      var imgW=380*sc,imgH=imgW*(KI.naturalHeight/KI.naturalWidth||0.33);
+      var y2=tY+textH*0.02;
+      gx.drawImage(KI,(gw-imgW)/2,y2,imgW,imgH);
+      var y3=y2+imgH+textH*0.04;
+      gx.fillStyle=THEMES[CUR_THEME].a1;gx.font='300 '+Math.round(18*sc)+'px Cormorant Garamond';
+      gx.fillText('1  4  4  7   H',gw/2,y3);
+      var y4=y3+textH*0.06;
+      gx.strokeStyle=THEMES[CUR_THEME].a2;gx.globalAlpha=0.5;gx.lineWidth=sc;
+      gx.beginPath();gx.moveTo(gw/2-74*sc,y4);gx.lineTo(gw/2-14*sc,y4);gx.stroke();
+      gx.beginPath();gx.moveTo(gw/2+14*sc,y4);gx.lineTo(gw/2+74*sc,y4);gx.stroke();
+      gx.globalAlpha=0.7;gx.fillStyle=THEMES[CUR_THEME].a2;gx.beginPath();gx.arc(gw/2,y4,5*sc,0,Math.PI*2);gx.fill();gx.globalAlpha=1;
+      var y5=y4+textH*0.1;
+      gx.fillStyle=THEMES[CUR_THEME].tm;gx.font='400 '+Math.round(28*sc)+'px Amiri';
+      gx.fillText('\u062A\u064E\u0642\u064E\u0628\u0651\u064E\u0644\u064E \u0627\u0644\u0644\u0651\u064E\u0647\u064F \u0645\u0650\u0646\u0651\u064E\u0627 \u0648\u064E\u0645\u0650\u0646\u0652\u0643\u064F\u0645\u0652',gw/2,y5);
+      var y6=y5+textH*0.06;
+      gx.fillStyle=THEMES[CUR_THEME].ts;gx.font='italic 400 '+Math.round(13*sc)+'px Cormorant Garamond';
+      gx.fillText('"Semoga Allah menerima amalan',gw/2,y6);gx.fillText('dari kami dan darimu sekalian"',gw/2,y6+22*sc);
+      var y7=y6+textH*0.14;
+      gx.fillStyle=THEMES[CUR_THEME].tm;gx.globalAlpha=0.85;gx.font='500 '+Math.round(15*sc)+'px Cormorant Garamond';
+      gx.fillText('M U H D A N   S Y A R O V Y',gw/2,y7);gx.globalAlpha=1;
+      gx.fillStyle=THEMES[CUR_THEME].tl;gx.font='300 '+Math.round(12*sc)+'px Cormorant Garamond';
+      gx.fillText('&  K E L U A R G A',gw/2,y7+28*sc);
       fdata.push(gx.getImageData(0,0,gw,gh));
       f++;
       if(f<frames){setTimeout(grab,120);}
