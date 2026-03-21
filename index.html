@@ -79,9 +79,9 @@ body{background:#E8E4DF;display:flex;align-items:center;justify-content:center;m
 <h3>Export Poster 9:16</h3>
 <p>Siap untuk IG Story / WA Status</p>
 <div class="mbs">
-<button id="xpng"><b>PNG</b><span>1440×2560 HD<br><small>Kualitas maksimal</small></span></button>
-<button id="xjpg"><b>JPG</b><span>1440×2560<br><small>Ukuran kecil untuk sharing</small></span></button>
-<button id="xgif"><b>GIF</b><span>1080×1920 animasi<br><small>36 frame, 4 detik loop</small></span></button>
+<button id="xpng"><b>PNG</b><span>1440×3120 HD (9:19.5)<br><small>Kualitas maksimal</small></span></button>
+<button id="xjpg"><b>JPG</b><span>1440×3120 (9:19.5)<br><small>Ukuran kecil untuk sharing</small></span></button>
+<button id="xgif"><b>GIF</b><span>1080×2340 animasi (9:19.5)<br><small>36 frame, 4 detik loop</small></span></button>
 </div>
 <div class="prg" id="PRG"></div>
 <button class="mcl" id="MCL">Tutup</button>
@@ -330,7 +330,7 @@ var CUR_THEME=0;
     setTimeout(function(){
       if(fmt==='gif'){captureGif();}
       else{
-        var ew=1440,eh=2560,ec=document.createElement('canvas');ec.width=ew;ec.height=eh;
+        var ew=1440,eh=3120,ec=document.createElement('canvas');ec.width=ew;ec.height=eh;
         var ex=ec.getContext('2d');
         ex.fillStyle='#FAFAF7';ex.fillRect(0,0,ew,eh);
         // Draw tawaf canvas scaled
@@ -380,7 +380,7 @@ var CUR_THEME=0;
   }
 
   function captureGif(){
-    var gw=1080,gh=1920,frames=36,delay=11;
+    var gw=1080,gh=2340,frames=36,delay=11;
     var gc=document.createElement('canvas');gc.width=gw;gc.height=gh;
     var gx=gc.getContext('2d');
     var fdata=[],f=0;
