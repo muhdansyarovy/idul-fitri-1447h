@@ -16,7 +16,7 @@ body{background:#E8E4DF;display:flex;align-items:center;justify-content:center;m
 .fb{position:absolute;inset:16px;border:0.5px solid var(--a1);opacity:0.15;pointer-events:none;z-index:1}
 .cn{position:absolute;width:20px;height:20px;z-index:3}.cn::before,.cn::after{content:'';position:absolute;background:var(--a1);opacity:0.3;transition:background .8s}
 .c1{top:14px;left:14px}.c1::before{width:20px;height:.5px}.c1::after{width:.5px;height:20px}
-.c2{top:14px;right:14px}.c2::before{top:0;right:0;width:20px;height:.5px}.c2::after{top:0;right:0;width:0.5px;height:20px}
+.c2{top:14px;right:14px}.c2::before{top:0;right:0;width:20px;height:.5px}.c2::after{top:0;right:0;width:.5px;height:20px}
 .c3{bottom:14px;left:14px}.c3::before{bottom:0;left:0;width:20px;height:.5px}.c3::after{bottom:0;left:0;width:.5px;height:20px}
 .c4{bottom:14px;right:14px}.c4::before{bottom:0;right:0;width:20px;height:.5px}.c4::after{bottom:0;right:0;width:.5px;height:20px}
 .twc{width:380px;height:310px;margin-bottom:22px;position:relative;animation:fi 1.5s ease-out both;transition:transform 1.2s cubic-bezier(.4,0,.2,1),margin 1.2s}
@@ -43,28 +43,22 @@ body{background:#E8E4DF;display:flex;align-items:center;justify-content:center;m
 .poster.zm .twc{transform:scale(2.8);margin-bottom:180px;margin-top:80px}
 .poster.zm .gt,.poster.zm .kt,.poster.zm .hy,.poster.zm .ba,.poster.zm .at,.poster.zm .ai,.poster.zm .sn,.poster.zm .ss,.poster.zm .th{opacity:0!important;pointer-events:none}
 @media(max-width:580px){body{padding:10px}.poster{width:100%;min-height:94vh;padding:30px 18px}.twc{width:310px;height:260px}.kt{width:280px}.at{font-size:22px}}
-
-/* Export button & modal */
-.exp-btn{position:fixed;bottom:20px;right:20px;width:48px;height:48px;border-radius:50%;background:#2C2C2C;color:#fff;border:none;font-size:20px;cursor:pointer;z-index:100;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,0.15);transition:transform .2s}
-.exp-btn:hover{transform:scale(1.1)}
-.exp-btn:active{transform:scale(0.95)}
-.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:200;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
-.modal-bg.open{display:flex}
-.modal{background:#fff;border-radius:16px;padding:32px;width:320px;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,0.2)}
-.modal h3{font-family:‘Cormorant Garamond’,serif;font-size:18px;font-weight:500;letter-spacing:2px;margin-bottom:6px;color:#2C2C2C}
-.modal p{font-size:12px;color:#9E8E7E;margin-bottom:20px}
-.modal-btns{display:flex;flex-direction:column;gap:10px}
-.modal-btns button{padding:14px;border:1px solid #E0D8D0;border-radius:10px;background:#FAFAF7;font-family:‘Cormorant Garamond’,serif;font-size:14px;letter-spacing:1px;cursor:pointer;transition:background .2s,border-color .2s;color:#2C2C2C;display:flex;align-items:center;justify-content:center;gap:8px}
-.modal-btns button:hover{background:#F0EBE4;border-color:#C4A96A}
-.modal-btns button:active{background:#E8E0D6}
-.modal-btns button .fmt{font-weight:600;min-width:36px}
-.modal-btns button .desc{font-size:11px;color:#9E8E7E}
-.modal-close{margin-top:16px;padding:10px 24px;border:none;background:none;font-family:‘Cormorant Garamond’,serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#9E8E7E;cursor:pointer}
-.modal-close:hover{color:#2C2C2C}
-.prog{display:none;margin-top:12px;font-size:11px;color:#9E8E7E}
-.prog.show{display:block}
+.exp-btn{position:fixed;bottom:20px;right:20px;width:48px;height:48px;border-radius:50%;background:#2C2C2C;color:#fff;border:none;font-size:20px;cursor:pointer;z-index:100;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,.15);transition:transform .2s}
+.exp-btn:hover{transform:scale(1.1)}.exp-btn:active{transform:scale(.95)}
+.mbg{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.mbg.open{display:flex}
+.mdl{background:#fff;border-radius:16px;padding:32px;width:340px;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,.2)}
+.mdl h3{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;letter-spacing:2px;margin-bottom:6px;color:#2C2C2C}
+.mdl p{font-size:12px;color:#9E8E7E;margin-bottom:20px}
+.mbs{display:flex;flex-direction:column;gap:10px}
+.mbs button{padding:14px 18px;border:1px solid #E0D8D0;border-radius:10px;background:#FAFAF7;font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:1px;cursor:pointer;transition:background .2s;color:#2C2C2C;display:flex;align-items:center;gap:10px;text-align:left}
+.mbs button:hover{background:#F0EBE4;border-color:#C4A96A}
+.mbs button .fmt{font-weight:700;font-size:15px;min-width:38px}
+.mbs button .info{display:flex;flex-direction:column}.mbs button .info .nm{font-weight:500}.mbs button .info .ds{font-size:11px;color:#9E8E7E;margin-top:2px}
+.mcl{margin-top:16px;padding:10px 24px;border:none;background:none;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#9E8E7E;cursor:pointer}.mcl:hover{color:#2C2C2C}
+.prg{display:none;margin-top:14px;font-size:12px;color:#5C4A28;padding:8px 16px;background:#F5F0E8;border-radius:8px}
+.prg.show{display:block}
 </style>
-
 </head>
 <body>
 <div class="poster" id="P">
@@ -83,27 +77,20 @@ body{background:#E8E4DF;display:flex;align-items:center;justify-content:center;m
 <div class="ss">&amp; Keluarga</div>
 <div class="th">tap untuk ganti tema warna</div>
 </div>
-
-<!-- Export button -->
-
-<button class="exp-btn" id="expBtn" title="Export">⇩</button>
-
-<!-- Export modal -->
-
-<div class="modal-bg" id="modalBg">
-<div class="modal">
+<button class="exp-btn" id="expBtn" title="Export">&#8681;</button>
+<div class="mbg" id="mbg">
+<div class="mdl">
 <h3>Export Poster</h3>
-<p>Format 9:16 (1080 × 1920 px)</p>
-<div class="modal-btns">
-<button onclick="doExport('png')"><span class="fmt">PNG</span> Kualitas tinggi, transparan</button>
-<button onclick="doExport('jpg')"><span class="fmt">JPG</span> Ukuran kecil, untuk sharing</button>
-<button onclick="doExport('gif')"><span class="fmt">GIF</span> Animasi tawaf (3 detik)</button>
+<p>Rasio 9:16 — siap untuk IG Story / WA Status</p>
+<div class="mbs">
+<button onclick="doExport('png')"><span class="fmt">PNG</span><span class="info"><span class="nm">Kualitas Maksimal</span><span class="ds">1440 × 2560 px — cocok untuk cetak & HD</span></span></button>
+<button onclick="doExport('jpg')"><span class="fmt">JPG</span><span class="info"><span class="nm">Sharing Cepat</span><span class="ds">1440 × 2560 px — ukuran kecil untuk WA/IG</span></span></button>
+<button onclick="doExport('gif')"><span class="fmt">GIF</span><span class="info"><span class="nm">Animasi Tawaf</span><span class="ds">1080 × 1920 px — 36 frame, ~4 detik loop</span></span></button>
 </div>
-<div class="prog" id="prog">Memproses...</div>
-<button class="modal-close" onclick="closeModal()">Tutup</button>
+<div class="prg" id="prg"></div>
+<button class="mcl" onclick="closeModal()">Tutup</button>
 </div>
 </div>
-
 <script>
 (function(){
 var KA={body:'#2C2C2C',band:'#C4A96A'};
@@ -123,15 +110,11 @@ var TH=[
 ];
 var cur=0,zoomed=false,bt;
 var P=document.getElementById('P'),TB=document.getElementById('TB'),KI=document.getElementById('KI');
-
-// === BG PARTICLES ===
 var BC=document.getElementById('BC'),bx=BC.getContext('2d'),PW,PH,bgD=[];
 function rBg(){var d=window.devicePixelRatio||1;PW=P.clientWidth;PH=P.clientHeight;BC.width=PW*d;BC.height=PH*d;BC.style.width=PW+'px';BC.style.height=PH+'px';bx.setTransform(d,0,0,d,0,0);}
 function iBg(){bgD=[];var i;for(i=0;i<180;i++)bgD.push({x:Math.random()*PW,y:Math.random()*PH,r:1.5+Math.random()*6,o:0.05+Math.random()*0.16,vx:(Math.random()-0.5)*0.25,vy:(Math.random()-0.5)*0.2,ph:Math.random()*Math.PI*2,ps:0.008+Math.random()*0.02,bl:Math.random()>0.4});for(i=0;i<60;i++)bgD.push({x:Math.random()*PW,y:Math.random()*PH,r:8+Math.random()*20,o:0.03+Math.random()*0.08,vx:(Math.random()-0.5)*0.12,vy:(Math.random()-0.5)*0.1,ph:Math.random()*Math.PI*2,ps:0.005+Math.random()*0.012,bl:true});}
 function dBg(){bx.clearRect(0,0,PW,PH);var t=TH[cur];for(var i=0;i<bgD.length;i++){var d=bgD[i];d.x+=d.vx;d.y+=d.vy;d.ph+=d.ps;if(d.x<-20)d.x=PW+20;if(d.x>PW+20)d.x=-20;if(d.y<-20)d.y=PH+20;if(d.y>PH+20)d.y=-20;bx.globalAlpha=d.o*(0.7+0.3*Math.sin(d.ph));if(d.bl&&d.r>4){var g=bx.createRadialGradient(d.x,d.y,0,d.x,d.y,d.r);g.addColorStop(0,t.bd);g.addColorStop(1,'rgba(0,0,0,0)');bx.fillStyle=g;}else{bx.fillStyle=t.bd;}bx.beginPath();bx.arc(d.x,d.y,d.r,0,Math.PI*2);bx.fill();}bx.globalAlpha=1;requestAnimationFrame(dBg);}
 rBg();iBg();dBg();window.addEventListener('resize',function(){rBg();iBg();});
-
-// === TAWAF ===
 var TC=document.getElementById('TC'),tx=TC.getContext('2d'),W,H,cx,cy;
 function rT(){var c=TC.parentElement,d=window.devicePixelRatio||1;W=c.clientWidth;H=c.clientHeight;TC.width=W*d;TC.height=H*d;TC.style.width=W+'px';TC.style.height=H+'px';tx.setTransform(d,0,0,d,0,0);cx=W/2;cy=H/2+8;gS();}
 var sl=[];function gS(){sl=[];var i,a,d;for(i=0;i<110;i++){a=Math.random()*Math.PI*2;d=30+Math.random()*165;sl.push({x:cx+Math.cos(a)*d*(0.7+Math.random()*0.7),y:cy+Math.sin(a)*d*(0.35+Math.random()*0.35),r:0.5+Math.random()*3,o:0.05+Math.random()*0.28});}for(i=0;i<22;i++){a=Math.random()*Math.PI*2;d=90+Math.random()*140;sl.push({x:cx+Math.cos(a)*d*(0.9+Math.random()*0.5),y:cy+Math.sin(a)*d*(0.4+Math.random()*0.3),r:2.5+Math.random()*5,o:0.02+Math.random()*0.09});}}
@@ -141,394 +124,344 @@ rT();window.addEventListener('resize',rT);
 function dK(){var kw=40,kh=45,kx=cx-kw/2,ky=cy-kh/2;tx.save();tx.fillStyle='rgba(0,0,0,0.05)';tx.beginPath();tx.ellipse(cx,cy+kh/2+4,kw*0.6,5.5,0,0,Math.PI*2);tx.fill();tx.fillStyle=KA.body;tx.globalAlpha=0.92;tx.fillRect(kx,ky,kw,kh);tx.beginPath();tx.moveTo(kx,ky);tx.lineTo(kx+8,ky-6);tx.lineTo(kx+kw+8,ky-6);tx.lineTo(kx+kw,ky);tx.closePath();tx.globalAlpha=0.65;tx.fill();tx.beginPath();tx.moveTo(kx+kw,ky);tx.lineTo(kx+kw+8,ky-6);tx.lineTo(kx+kw+8,ky+kh-6);tx.lineTo(kx+kw,ky+kh);tx.closePath();tx.globalAlpha=0.48;tx.fill();tx.globalAlpha=1;tx.fillStyle=KA.band;tx.globalAlpha=0.7;tx.fillRect(kx,ky+13,kw,6);tx.globalAlpha=0.3;tx.fillRect(kx+kw,ky+12,8,6);tx.globalAlpha=0.45;tx.strokeStyle=KA.band;tx.lineWidth=0.4;tx.beginPath();tx.moveTo(kx+2,ky+15.5);tx.lineTo(kx+kw-2,ky+15.5);tx.stroke();tx.globalAlpha=0.25;tx.strokeStyle='#FAFAF7';tx.lineWidth=0.5;for(var i=0;i<6;i++){tx.beginPath();tx.arc(kx+5+i*6,ky+15.5,1.3,0,Math.PI,true);tx.stroke();}tx.globalAlpha=0.55;tx.strokeStyle=KA.band;tx.lineWidth=0.6;tx.beginPath();tx.moveTo(cx-4.5,ky+kh);tx.lineTo(cx-4.5,ky+26);tx.quadraticCurveTo(cx,ky+21,cx+4.5,ky+26);tx.lineTo(cx+4.5,ky+kh);tx.stroke();tx.globalAlpha=1;tx.restore();}
 function dT(){var t=TH[cur],i,j,p,rx,ry,px,py;tx.clearRect(0,0,W,H);for(i=0;i<sl.length;i++){tx.beginPath();tx.arc(sl[i].x,sl[i].y,sl[i].r,0,Math.PI*2);tx.fillStyle=t.splat;tx.globalAlpha=sl[i].o;tx.fill();}tx.globalAlpha=1;for(i=0;i<acar.length;i++){var a=acar[i];tx.beginPath();tx.ellipse(cx,cy,a.rx,a.ry,0,a.s,a.s+a.w);tx.strokeStyle=t.trail;tx.globalAlpha=a.o;tx.lineWidth=a.l;tx.setLineDash(a.d?[3,5]:[]);tx.stroke();}tx.setLineDash([]);tx.globalAlpha=1;for(i=0;i<ob.length;i++){tx.beginPath();tx.ellipse(cx,cy,ob[i].rx,ob[i].ry,0,0,Math.PI*2);tx.strokeStyle=t.trail;tx.globalAlpha=0.04;tx.lineWidth=0.4;tx.stroke();}tx.globalAlpha=1;for(i=0;i<ob.length;i++){for(j=0;j<ob[i].p.length;j++){p=ob[i].p[j];p.a-=ob[i].sp*p.s;rx=ob[i].rx+p.f;ry=ob[i].ry+p.f*0.4;px=cx+Math.cos(p.a)*rx;py=cy+Math.sin(p.a)*ry;if(Math.sin(p.a)<0.1){tx.beginPath();tx.arc(px,py,p.z*0.65,0,Math.PI*2);tx.fillStyle=t.dots;tx.globalAlpha=0.18;tx.fill();}}}tx.globalAlpha=1;dK();for(i=0;i<ob.length;i++){for(j=0;j<ob[i].p.length;j++){p=ob[i].p[j];rx=ob[i].rx+p.f;ry=ob[i].ry+p.f*0.4;px=cx+Math.cos(p.a)*rx;py=cy+Math.sin(p.a)*ry;if(Math.sin(p.a)>=0.1){tx.fillStyle=t.dots;tx.globalAlpha=0.32+Math.sin(p.a)*0.25;tx.beginPath();tx.arc(px,py-p.z*1.1,p.z*0.45,0,Math.PI*2);tx.fill();tx.beginPath();tx.ellipse(px,py+p.z*0.15,p.z*0.35,p.z*0.75,0,0,Math.PI*2);tx.fill();}}}tx.globalAlpha=1;var g=tx.createRadialGradient(cx,cy,8,cx,cy,60);g.addColorStop(0,KA.band+'0D');g.addColorStop(1,KA.band+'00');tx.fillStyle=g;tx.beginPath();tx.ellipse(cx,cy,60,34,0,0,Math.PI*2);tx.fill();requestAnimationFrame(dT);}
 dT();
-
-// === THEME ===
 function sT(i){var t=TH[i],s=P.style;s.setProperty('--a1',t.a1);s.setProperty('--a2',t.a2);s.setProperty('--tm',t.tm);s.setProperty('--ts',t.ts);s.setProperty('--tl',t.tl);KI.src=TI[i];TB.textContent=t.name;TB.classList.add('sh');clearTimeout(bt);bt=setTimeout(function(){TB.classList.remove('sh');},1800);}
 P.addEventListener('click',function(e){var r=P.getBoundingClientRect(),rip=document.createElement('div');rip.className='rp';rip.style.left=(e.clientX-r.left-40)+'px';rip.style.top=(e.clientY-r.top-40)+'px';rip.style.width='80px';rip.style.height='80px';P.appendChild(rip);setTimeout(function(){rip.remove();},800);if(zoomed){P.classList.remove('zm');zoomed=false;cur=0;sT(cur);return;}if(cur===TH.length-1){P.classList.add('zm');zoomed=true;TB.textContent='Tawaf';TB.classList.add('sh');clearTimeout(bt);bt=setTimeout(function(){TB.classList.remove('sh');},1800);}else{cur=(cur+1)%TH.length;sT(cur);}});
 
-// =============================================================
-// EXPORT FUNCTIONS - render poster to 1080x1920 (9:16) canvas
-// =============================================================
-var EW=1080, EH=1920;
-var titleImg = new Image();
-titleImg.src = TI[cur];
+/* ================================================================
+HIGH-QUALITY EXPORT ENGINE
+PNG/JPG: 1440 x 2560 (9:16)
+GIF: 1080 x 1920, 36 frames, 4 sec loop
+================================================================ */
+var STATIC_W=1440, STATIC_H=2560;
+var GIF_W=1080, GIF_H=1920, GIF_FRAMES=36, GIF_DELAY=11; /* delay in centiseconds */
 
+/* Render one full poster frame onto a given canvas context at given size */
+function renderPoster(ex, ew, eh, tawafStep) {
+var t = TH[cur];
+var sc = ew / 540;
+
+/* White BG */
+ex.fillStyle = ‘#FAFAF7’;
+ex.fillRect(0, 0, ew, eh);
+
+/* BG particles - high res */
+for (var i = 0; i < bgD.length; i++) {
+var dd = bgD[i];
+var alpha = dd.o * (0.7 + 0.3 * Math.sin(dd.ph + (tawafStep||0)*0.15));
+ex.globalAlpha = alpha;
+var dx = dd.x * sc, dy = dd.y * sc, dr = dd.r * sc;
+if (dd.bl && dd.r > 4) {
+var gg = ex.createRadialGradient(dx,dy,0,dx,dy,dr);
+gg.addColorStop(0, t.bd); gg.addColorStop(1, ‘rgba(0,0,0,0)’);
+ex.fillStyle = gg;
+} else { ex.fillStyle = t.bd; }
+ex.beginPath(); ex.arc(dx, dy, dr, 0, Math.PI*2); ex.fill();
+}
+ex.globalAlpha = 1;
+
+/* Frame border */
+ex.strokeStyle = t.a1; ex.globalAlpha = 0.15; ex.lineWidth = 1.5*sc;
+ex.strokeRect(16*sc, 16*sc, ew-32*sc, eh-32*sc); ex.globalAlpha = 1;
+
+/* Corners */
+var cm = 20*sc;
+ex.strokeStyle = t.a1; ex.globalAlpha = 0.3; ex.lineWidth = 1*sc;
+[[16*sc,16*sc,1,0,0,1],[ew-16*sc,16*sc,-1,0,0,1],[16*sc,eh-16*sc,1,0,0,-1],[ew-16*sc,eh-16*sc,-1,0,0,-1]].forEach(function(c){
+ex.beginPath();ex.moveTo(c[0],c[1]);ex.lineTo(c[0]+cm*c[2],c[1]);ex.stroke();
+ex.beginPath();ex.moveTo(c[0],c[1]);ex.lineTo(c[0],c[1]+cm*c[5]);ex.stroke();
+});
+ex.globalAlpha = 1;
+
+/* Tawaf area - render directly at export scale */
+var twW = 380*sc, twH = 310*sc;
+var twX = (ew-twW)/2, twY = eh*0.08;
+var tcx = twX + twW/2, tcy = twY + twH/2 + 8*sc;
+var step = tawafStep || 0;
+
+/* Splatters */
+for (i=0; i<sl.length; i++){
+ex.beginPath(); ex.arc(twX+sl[i].x*sc*twW/(380), twY+sl[i].y*sc*twH/(310), sl[i].r*sc, 0, Math.PI*2);
+ex.fillStyle=t.splat; ex.globalAlpha=sl[i].o; ex.fill();
+}
+ex.globalAlpha=1;
+
+/* Trail arcs */
+for(i=0;i<acar.length;i++){
+var aa=acar[i];
+ex.beginPath();ex.ellipse(tcx,tcy,aa.rx*sc,aa.ry*sc,0,aa.s,aa.s+aa.w);
+ex.strokeStyle=t.trail;ex.globalAlpha=aa.o;ex.lineWidth=aa.l*sc;
+ex.setLineDash(aa.d?[3*sc,5*sc]:[]);ex.stroke();
+}
+ex.setLineDash([]);ex.globalAlpha=1;
+
+/* Orbit rings */
+for(i=0;i<ob.length;i++){
+ex.beginPath();ex.ellipse(tcx,tcy,ob[i].rx*sc,ob[i].ry*sc,0,0,Math.PI*2);
+ex.strokeStyle=t.trail;ex.globalAlpha=0.04;ex.lineWidth=0.6*sc;ex.stroke();
+}
+ex.globalAlpha=1;
+
+/* People - back */
+for(i=0;i<ob.length;i++){for(var j=0;j<ob[i].p.length;j++){
+var pp=ob[i].p[j], ang=pp.a - step*ob[i].sp*pp.s*6;
+var orx=ob[i].rx+pp.f, ory=ob[i].ry+pp.f*0.4;
+var ppx=tcx+Math.cos(ang)*orx*sc, ppy=tcy+Math.sin(ang)*ory*sc;
+if(Math.sin(ang)<0.1){ex.beginPath();ex.arc(ppx,ppy,pp.z*0.65*sc,0,Math.PI*2);ex.fillStyle=t.dots;ex.globalAlpha=0.18;ex.fill();}
+}}ex.globalAlpha=1;
+
+/* Ka’bah at export scale */
+var kw=40*sc,kh=45*sc,kx=tcx-kw/2,ky=tcy-kh/2;
+ex.save();
+ex.fillStyle=‘rgba(0,0,0,0.05)’;ex.beginPath();ex.ellipse(tcx,tcy+kh/2+4*sc,kw*0.6,5.5*sc,0,0,Math.PI*2);ex.fill();
+ex.fillStyle=KA.body;ex.globalAlpha=0.92;ex.fillRect(kx,ky,kw,kh);
+ex.beginPath();ex.moveTo(kx,ky);ex.lineTo(kx+8*sc,ky-6*sc);ex.lineTo(kx+kw+8*sc,ky-6*sc);ex.lineTo(kx+kw,ky);ex.closePath();ex.globalAlpha=0.65;ex.fill();
+ex.beginPath();ex.moveTo(kx+kw,ky);ex.lineTo(kx+kw+8*sc,ky-6*sc);ex.lineTo(kx+kw+8*sc,ky+kh-6*sc);ex.lineTo(kx+kw,ky+kh);ex.closePath();ex.globalAlpha=0.48;ex.fill();
+ex.globalAlpha=1;ex.fillStyle=KA.band;ex.globalAlpha=0.7;ex.fillRect(kx,ky+13*sc,kw,6*sc);
+ex.globalAlpha=0.3;ex.fillRect(kx+kw,ky+12*sc,8*sc,6*sc);
+ex.globalAlpha=0.45;ex.strokeStyle=KA.band;ex.lineWidth=0.6*sc;
+ex.beginPath();ex.moveTo(kx+2*sc,ky+15.5*sc);ex.lineTo(kx+kw-2*sc,ky+15.5*sc);ex.stroke();
+ex.globalAlpha=0.55;ex.strokeStyle=KA.band;ex.lineWidth=0.8*sc;
+ex.beginPath();ex.moveTo(tcx-4.5*sc,ky+kh);ex.lineTo(tcx-4.5*sc,ky+26*sc);ex.quadraticCurveTo(tcx,ky+21*sc,tcx+4.5*sc,ky+26*sc);ex.lineTo(tcx+4.5*sc,ky+kh);ex.stroke();
+ex.globalAlpha=1;ex.restore();
+
+/* People - front */
+for(i=0;i<ob.length;i++){for(j=0;j<ob[i].p.length;j++){
+pp=ob[i].p[j]; ang=pp.a - step*ob[i].sp*pp.s*6;
+orx=ob[i].rx+pp.f; ory=ob[i].ry+pp.f*0.4;
+ppx=tcx+Math.cos(ang)*orx*sc; ppy=tcy+Math.sin(ang)*ory*sc;
+if(Math.sin(ang)>=0.1){
+ex.fillStyle=t.dots;ex.globalAlpha=0.32+Math.sin(ang)*0.25;
+ex.beginPath();ex.arc(ppx,ppy-pp.z*1.1*sc,pp.z*0.55*sc,0,Math.PI*2);ex.fill();
+ex.beginPath();ex.ellipse(ppx,ppy+pp.z*0.15*sc,pp.z*0.4*sc,pp.z*0.85*sc,0,0,Math.PI*2);ex.fill();
+}
+}}ex.globalAlpha=1;
+
+/* Glow */
+var glw=ex.createRadialGradient(tcx,tcy,8*sc,tcx,tcy,60*sc);
+glw.addColorStop(0,KA.band+‘0D’);glw.addColorStop(1,KA.band+‘00’);
+ex.fillStyle=glw;ex.beginPath();ex.ellipse(tcx,tcy,60*sc,34*sc,0,0,Math.PI*2);ex.fill();
+
+/* === TEXT === */
+var tY = twY + twH + 40*sc;
+ex.textAlign=‘center’;
+
+/* Selamat Hari Raya */
+ex.font = ’400 ’+Math.round(13*sc)+‘px “Cormorant Garamond”’;
+ex.fillStyle = t.ts;
+ex.fillText(‘S E L A M A T   H A R I   R A Y A’, ew/2, tY);
+
+/* Idul Fitri image */
+var imgW=340*sc, imgH=imgW*(KI.naturalHeight/KI.naturalWidth||0.33);
+ex.drawImage(KI, (ew-imgW)/2, tY+12*sc, imgW, imgH);
+
+/* 1447 H */
+var hyY = tY + 12*sc + imgH + 24*sc;
+ex.font = ’300 ’+Math.round(17*sc)+‘px “Cormorant Garamond”’;
+ex.fillStyle = t.a1;
+ex.fillText(‘1  4  4  7   H’, ew/2, hyY);
+
+/* Botanical accent */
+var baY = hyY + 44*sc;
+ex.strokeStyle=t.a2;ex.globalAlpha=0.5;ex.lineWidth=1.2*sc;
+ex.beginPath();ex.moveTo(ew/2-74*sc,baY);ex.lineTo(ew/2-14*sc,baY);ex.stroke();
+ex.beginPath();ex.moveTo(ew/2+14*sc,baY);ex.lineTo(ew/2+74*sc,baY);ex.stroke();
+ex.globalAlpha=0.7;ex.fillStyle=t.a2;
+ex.beginPath();ex.arc(ew/2,baY,5*sc,0,Math.PI*2);ex.fill();ex.globalAlpha=1;
+
+/* Arabic doa */
+var arY=baY+55*sc;
+ex.font=‘400 ‘+Math.round(26*sc)+‘px Amiri’;
+ex.fillStyle=t.tm;ex.direction=‘rtl’;
+ex.fillText(’\u062A\u064E\u0642\u064E\u0628\u0651\u064E\u0644\u064E \u0627\u0644\u0644\u0651\u064E\u0647\u064F \u0645\u0650\u0646\u0651\u064E\u0627 \u0648\u064E\u0645\u0650\u0646\u0652\u0643\u064F\u0645\u0652’,ew/2,arY);
+ex.direction=‘ltr’;
+
+/* Translation */
+var aiY=arY+34*sc;
+ex.font=‘italic 400 ‘+Math.round(12.5*sc)+‘px “Cormorant Garamond”’;
+ex.fillStyle=t.ts;
+ex.fillText(’“Semoga Allah menerima amalan’,ew/2,aiY);
+ex.fillText(‘dari kami dan darimu sekalian”’,ew/2,aiY+20*sc);
+
+/* Sender */
+var snY=aiY+75*sc;
+ex.font=‘500 ‘+Math.round(14*sc)+‘px “Cormorant Garamond”’;
+ex.fillStyle=t.tm;ex.globalAlpha=0.85;
+ex.fillText(‘M U H D A N   S Y A R O V Y’,ew/2,snY);
+ex.globalAlpha=1;
+ex.font=’300 ’+Math.round(11*sc)+‘px “Cormorant Garamond”’;
+ex.fillStyle=t.tl;
+ex.fillText(’&  K E L U A R G A’,ew/2,snY+26*sc);
+}
+
+/* ===== EXPORT HANDLERS ===== */
 window.doExport = function(fmt) {
-  var prog = document.getElementById('prog');
-  prog.className = 'prog show';
-  prog.textContent = fmt === 'gif' ? 'Merekam animasi... 0%' : 'Memproses...';
+var prg=document.getElementById(‘prg’);
+prg.className=‘prg show’;
+prg.textContent = fmt===‘gif’?‘Merekam frame 0/’+GIF_FRAMES+’…’:‘Rendering HD…’;
 
-  if (fmt === 'gif') {
-    captureGif();
-  } else {
-    setTimeout(function(){ renderFrame(function(canvas){
-      var mime = fmt === 'png' ? 'image/png' : 'image/jpeg';
-      var quality = fmt === 'jpg' ? 0.92 : undefined;
-      canvas.toBlob(function(blob){
-        var url = URL.createObjectURL(blob);
-        var a = document.createElement('a');
-        a.href = url;
-        a.download = 'idul-fitri-1447h.' + fmt;
-        a.click();
-        URL.revokeObjectURL(url);
-        prog.className = 'prog';
-      }, mime, quality);
-    }); }, 100);
-  }
+setTimeout(function(){
+if(fmt===‘gif’){captureGif();}
+else{
+var ec=document.createElement(‘canvas’);
+ec.width=STATIC_W;ec.height=STATIC_H;
+var ex=ec.getContext(‘2d’);
+renderPoster(ex,STATIC_W,STATIC_H,0);
+var mime=fmt===‘png’?‘image/png’:‘image/jpeg’;
+var q=fmt===‘jpg’?0.95:undefined;
+ec.toBlob(function(blob){
+var url=URL.createObjectURL(blob);var a=document.createElement(‘a’);
+a.href=url;a.download=‘idul-fitri-1447h.’+fmt;a.click();
+URL.revokeObjectURL(url);prg.className=‘prg’;
+prg.textContent=’’;
+},mime,q);
+}
+},100);
 };
 
-function renderFrame(cb) {
-  var ec = document.createElement('canvas');
-  ec.width = EW; ec.height = EH;
-  var ex = ec.getContext('2d');
-  var sc = EW / 540; // scale factor
-  var t = TH[cur];
+function captureGif(){
+var prg=document.getElementById(‘prg’);
+var ec=document.createElement(‘canvas’);ec.width=GIF_W;ec.height=GIF_H;
+var ex=ec.getContext(‘2d’);
+var frameDatas=[];
+var f=0;
 
-  // Background
-  ex.fillStyle = '#FAFAF7';
-  ex.fillRect(0, 0, EW, EH);
-
-  // BG particles
-  for (var i = 0; i < bgD.length; i++) {
-    var dd = bgD[i];
-    ex.globalAlpha = dd.o * (0.7 + 0.3 * Math.sin(dd.ph));
-    if (dd.bl && dd.r > 4) {
-      var gg = ex.createRadialGradient(dd.x*sc, dd.y*sc, 0, dd.x*sc, dd.y*sc, dd.r*sc);
-      gg.addColorStop(0, t.bd); gg.addColorStop(1, 'rgba(0,0,0,0)');
-      ex.fillStyle = gg;
-    } else { ex.fillStyle = t.bd; }
-    ex.beginPath(); ex.arc(dd.x*sc, dd.y*sc, dd.r*sc, 0, Math.PI*2); ex.fill();
-  }
-  ex.globalAlpha = 1;
-
-  // Frame border
-  ex.strokeStyle = t.a1; ex.globalAlpha = 0.15; ex.lineWidth = 1;
-  ex.strokeRect(32, 32, EW-64, EH-64);
-  ex.globalAlpha = 1;
-
-  // Corner marks
-  var cm = 40;
-  ex.strokeStyle = t.a1; ex.globalAlpha = 0.3; ex.lineWidth = 1;
-  ex.beginPath(); ex.moveTo(28,28); ex.lineTo(28+cm,28); ex.stroke();
-  ex.beginPath(); ex.moveTo(28,28); ex.lineTo(28,28+cm); ex.stroke();
-  ex.beginPath(); ex.moveTo(EW-28,28); ex.lineTo(EW-28-cm,28); ex.stroke();
-  ex.beginPath(); ex.moveTo(EW-28,28); ex.lineTo(EW-28,28+cm); ex.stroke();
-  ex.beginPath(); ex.moveTo(28,EH-28); ex.lineTo(28+cm,EH-28); ex.stroke();
-  ex.beginPath(); ex.moveTo(28,EH-28); ex.lineTo(28,EH-28-cm); ex.stroke();
-  ex.beginPath(); ex.moveTo(EW-28,EH-28); ex.lineTo(EW-28-cm,EH-28); ex.stroke();
-  ex.beginPath(); ex.moveTo(EW-28,EH-28); ex.lineTo(EW-28,EH-28-cm); ex.stroke();
-  ex.globalAlpha = 1;
-
-  // Tawaf canvas - draw scaled
-  var twX = (EW - 380*sc) / 2, twY = EH * 0.12;
-  ex.drawImage(TC, twX, twY, 380*sc, 310*sc);
-
-  // Text positioning
-  var tY = twY + 310*sc + 44*sc;
-
-  // "SELAMAT HARI RAYA"
-  ex.font = '400 ' + Math.round(13*sc) + 'px "Cormorant Garamond"';
-  ex.fillStyle = t.ts; ex.textAlign = 'center';
-  ex.letterSpacing = (5*sc) + 'px';
-  ex.fillText('S E L A M A T   H A R I   R A Y A', EW/2, tY);
-
-  // "Idul Fitri" image
-  titleImg.src = TI[cur];
-  var imgW = 340*sc, imgH = imgW * (KI.naturalHeight / KI.naturalWidth || 0.33);
-  var imgX = (EW - imgW) / 2, imgY = tY + 12*sc;
-  ex.drawImage(KI, imgX, imgY, imgW, imgH);
-
-  // "1447 H"
-  var hyY = imgY + imgH + 20*sc;
-  ex.font = '300 ' + Math.round(17*sc) + 'px "Cormorant Garamond"';
-  ex.fillStyle = t.a1;
-  ex.fillText('1  4  4  7   H', EW/2, hyY);
-
-  // Botanical accent
-  var baY = hyY + 40*sc;
-  ex.strokeStyle = t.a2; ex.globalAlpha = 0.5; ex.lineWidth = 1*sc;
-  ex.beginPath(); ex.moveTo(EW/2-74*sc, baY); ex.lineTo(EW/2-14*sc, baY); ex.stroke();
-  ex.beginPath(); ex.moveTo(EW/2+14*sc, baY); ex.lineTo(EW/2+74*sc, baY); ex.stroke();
-  ex.globalAlpha = 0.7; ex.fillStyle = t.a2;
-  ex.beginPath(); ex.arc(EW/2, baY, 5*sc, 0, Math.PI*2); ex.fill();
-  ex.globalAlpha = 1;
-
-  // Arabic text
-  var arY = baY + 55*sc;
-  ex.font = '400 ' + Math.round(26*sc) + 'px Amiri';
-  ex.fillStyle = t.tm; ex.textAlign = 'center'; ex.direction = 'rtl';
-  ex.fillText('\u062A\u064E\u0642\u064E\u0628\u0651\u064E\u0644\u064E \u0627\u0644\u0644\u0651\u064E\u0647\u064F \u0645\u0650\u0646\u0651\u064E\u0627 \u0648\u064E\u0645\u0650\u0646\u0652\u0643\u064F\u0645\u0652', EW/2, arY);
-  ex.direction = 'ltr';
-
-  // Translation
-  var aiY = arY + 30*sc;
-  ex.font = 'italic 400 ' + Math.round(12.5*sc) + 'px "Cormorant Garamond"';
-  ex.fillStyle = t.ts;
-  ex.fillText('"Semoga Allah menerima amalan', EW/2, aiY);
-  ex.fillText('dari kami dan darimu sekalian"', EW/2, aiY + 18*sc);
-
-  // Sender
-  var snY = aiY + 70*sc;
-  ex.font = '500 ' + Math.round(14*sc) + 'px "Cormorant Garamond"';
-  ex.fillStyle = t.tm; ex.globalAlpha = 0.85;
-  ex.fillText('M U H D A N   S Y A R O V Y', EW/2, snY);
-  ex.globalAlpha = 1;
-  ex.font = '300 ' + Math.round(11*sc) + 'px "Cormorant Garamond"';
-  ex.fillStyle = t.tl;
-  ex.fillText('&  K E L U A R G A', EW/2, snY + 24*sc);
-
-  cb(ec);
+function nextFrame(){
+prg.textContent=‘Merekam frame ‘+(f+1)+’/’+GIF_FRAMES+’…’;
+renderPoster(ex,GIF_W,GIF_H,f);
+frameDatas.push(ex.getImageData(0,0,GIF_W,GIF_H));
+f++;
+if(f<GIF_FRAMES){setTimeout(nextFrame,10);}
+else{encodeAndDownload(frameDatas);}
+}
+nextFrame();
 }
 
-// === GIF EXPORT (frame sequence as animated WebP fallback / multi-PNG) ===
-function captureGif() {
-  var frames = [], total = 20, delay = 150, count = 0;
-  var prog = document.getElementById('prog');
+function encodeAndDownload(frames){
+var prg=document.getElementById(‘prg’);
+prg.textContent=‘Encoding GIF… (building palette)’;
 
-  function grabFrame() {
-    renderFrame(function(canvas) {
-      frames.push(canvas.toDataURL('image/png'));
-      count++;
-      prog.textContent = 'Merekam animasi... ' + Math.round(count/total*100) + '%';
-      if (count < total) {
-        setTimeout(grabFrame, delay);
-      } else {
-        // Build animated GIF using simple approach
-        buildGif(frames, delay, function(blob) {
-          var url = URL.createObjectURL(blob);
-          var a = document.createElement('a');
-          a.href = url; a.download = 'idul-fitri-1447h.gif'; a.click();
-          URL.revokeObjectURL(url);
-          prog.className = 'prog';
-        });
-      }
-    });
+setTimeout(function(){
+/* Build optimized palette from multiple frames */
+var palette=buildPalette(frames);
+prg.textContent=‘Encoding GIF… (quantizing frames)’;
+
+```
+setTimeout(function(){
+  var indexed=[];
+  for(var f=0;f<frames.length;f++){
+    indexed.push(quantize(frames[f],palette,GIF_W,GIF_H));
+    if(f%6===0) prg.textContent='Encoding GIF... (frame '+(f+1)+'/'+frames.length+')';
   }
-  grabFrame();
+
+  prg.textContent='Encoding GIF... (compressing)';
+  setTimeout(function(){
+    var gif=buildGif(indexed,palette,GIF_W,GIF_H,GIF_DELAY);
+    var blob=new Blob([gif],{type:'image/gif'});
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement('a');
+    a.href=url;a.download='idul-fitri-1447h.gif';a.click();
+    URL.revokeObjectURL(url);
+    prg.textContent='Selesai!';
+    setTimeout(function(){prg.className='prg';prg.textContent='';},2000);
+  },50);
+},50);
+```
+
+},50);
 }
 
-// Minimal GIF89a encoder
-function buildGif(dataUrls, delay, cb) {
-  var prog = document.getElementById('prog');
-  prog.textContent = 'Encoding GIF...';
-
-  // Use smaller size for GIF to keep file manageable
-  var GW = 540, GH = 960;
-  var canvas = document.createElement('canvas');
-  canvas.width = GW; canvas.height = GH;
-  var ctx2 = canvas.getContext('2d');
-
-  var imgElements = [];
-  var loaded = 0;
-
-  for (var i = 0; i < dataUrls.length; i++) {
-    var img = new Image();
-    img.onload = function() {
-      loaded++;
-      if (loaded === dataUrls.length) processFrames();
-    };
-    img.src = dataUrls[i];
-    imgElements.push(img);
-  }
-
-  function processFrames() {
-    prog.textContent = 'Encoding GIF... Mengumpulkan frame...';
-    var frameDataArr = [];
-    for (var f = 0; f < imgElements.length; f++) {
-      ctx2.clearRect(0, 0, GW, GH);
-      ctx2.drawImage(imgElements[f], 0, 0, GW, GH);
-      var imgData = ctx2.getImageData(0, 0, GW, GH);
-      frameDataArr.push(imgData);
-    }
-
-    // Simple approach: encode as multi-frame PNG sequence downloadable as zip
-    // Or better: use actual GIF encoding
-    prog.textContent = 'Encoding GIF...';
-
-    try {
-      var gif = encodeGif(frameDataArr, GW, GH, delay/10);
-      var blob = new Blob([gif], {type: 'image/gif'});
-      cb(blob);
-    } catch(e) {
-      // Fallback: export first frame as static image
-      prog.textContent = 'GIF encoding gagal, download PNG...';
-      canvas.toBlob(function(blob){ cb(blob); }, 'image/png');
-    }
-  }
+/* Median-cut palette from sampled frames */
+function buildPalette(frames){
+var colors={};
+/* Sample from 4 evenly spaced frames */
+var sampleFrames=[0,Math.floor(frames.length/3),Math.floor(frames.length*2/3),frames.length-1];
+for(var fi=0;fi<sampleFrames.length;fi++){
+var data=frames[sampleFrames[fi]].data;
+for(var i=0;i<data.length;i+=20){ /* sample every 5th pixel */
+var r=data[i]>>2<<2,g=data[i+1]>>2<<2,b=data[i+2]>>2<<2;
+var k=(r<<16)|(g<<8)|b;
+if(!colors[k])colors[k]=[r,g,b,0];
+colors[k][3]++;
+}
+}
+/* Sort by frequency, take top 255 + add white */
+var arr=[];for(var k in colors)arr.push(colors[k]);
+arr.sort(function(a,b){return b[3]-a[3];});
+var pal=[[250,250,247]]; /* ensure white background is in palette */
+for(var i=0;i<arr.length&&pal.length<256;i++){
+pal.push([arr[i][0],arr[i][1],arr[i][2]]);
+}
+while(pal.length<256)pal.push([0,0,0]);
+return pal;
 }
 
-// Basic GIF89a encoder with median-cut color quantization
-function encodeGif(frames, w, h, delayCs) {
-  var buf = [];
-  function w16(v) { buf.push(v & 0xFF, (v >> 8) & 0xFF); }
-  function wb(v) { buf.push(v); }
-
-  // Build global color table from first frame (256 colors)
-  var palette = buildPalette(frames[0], 256);
-
-  // Header
-  buf.push(0x47,0x49,0x46,0x38,0x39,0x61); // GIF89a
-  w16(w); w16(h);
-  wb(0xF7); // GCT flag, 256 colors (7+1=8 bits)
-  wb(0); // bg color index
-  wb(0); // pixel aspect
-
-  // Global Color Table
-  for (var i = 0; i < 256; i++) {
-    if (i < palette.length) {
-      buf.push(palette[i][0], palette[i][1], palette[i][2]);
-    } else {
-      buf.push(0, 0, 0);
-    }
-  }
-
-  // Netscape extension for looping
-  wb(0x21); wb(0xFF); wb(0x0B);
-  buf.push(0x4E,0x45,0x54,0x53,0x43,0x41,0x50,0x45,0x32,0x2E,0x30); // NETSCAPE2.0
-  wb(0x03); wb(0x01); w16(0); // loop forever
-  wb(0x00);
-
-  // Frames
-  for (var f = 0; f < frames.length; f++) {
-    // Graphic Control Extension
-    wb(0x21); wb(0xF9); wb(0x04);
-    wb(0x00); // no transparency
-    w16(delayCs); // delay
-    wb(0x00); // no transparent color
-    wb(0x00);
-
-    // Image Descriptor
-    wb(0x2C);
-    w16(0); w16(0); w16(w); w16(h);
-    wb(0x00); // no local color table
-
-    // LZW encode
-    var indexed = quantizeFrame(frames[f], palette, w, h);
-    var minCodeSize = 8;
-    wb(minCodeSize);
-    var compressed = lzwEncode(indexed, minCodeSize);
-    // Write sub-blocks
-    var pos = 0;
-    while (pos < compressed.length) {
-      var chunk = Math.min(255, compressed.length - pos);
-      wb(chunk);
-      for (var ci = 0; ci < chunk; ci++) buf.push(compressed[pos++]);
-    }
-    wb(0x00); // block terminator
-  }
-
-  wb(0x3B); // trailer
-  return new Uint8Array(buf);
+/* Quantize with dithering-free nearest color */
+function quantize(imgData,palette,w,h){
+var data=imgData.data,out=new Uint8Array(w*h),cache={};
+for(var i=0;i<w*h;i++){
+var idx=i*4;
+var r=data[idx],g=data[idx+1],b=data[idx+2];
+var key=((r>>2)<<16)|((g>>2)<<8)|(b>>2);
+if(cache[key]!==undefined){out[i]=cache[key];continue;}
+var best=0,bestD=999999;
+for(var j=0;j<256;j++){
+var dr=r-palette[j][0],dg=g-palette[j][1],db=b-palette[j][2];
+var dd=dr*dr+dg*dg+db*db;
+if(dd<bestD){bestD=dd;best=j;if(dd===0)break;}
+}
+cache[key]=best;out[i]=best;
+}
+return out;
 }
 
-function buildPalette(imgData, maxColors) {
-  // Simple uniform quantization for speed
-  var pal = [], seen = {};
-  var data = imgData.data;
-  for (var i = 0; i < data.length; i += 16) { // sample every 4th pixel
-    var r = data[i] >> 3 << 3, g = data[i+1] >> 3 << 3, b = data[i+2] >> 3 << 3;
-    var key = (r<<16)|(g<<8)|b;
-    if (!seen[key]) { seen[key] = true; pal.push([r,g,b]); }
-    if (pal.length >= maxColors) break;
-  }
-  while (pal.length < maxColors) pal.push([0,0,0]);
-  return pal.slice(0, maxColors);
+function buildGif(indexed,palette,w,h,delayCs){
+var buf=[];
+function w16(v){buf.push(v&0xFF,(v>>8)&0xFF);}
+function wb(v){buf.push(v);}
+/* Header */
+buf.push(0x47,0x49,0x46,0x38,0x39,0x61);
+w16(w);w16(h);wb(0xF7);wb(0);wb(0);
+/* GCT */
+for(var i=0;i<256;i++)buf.push(palette[i][0],palette[i][1],palette[i][2]);
+/* NETSCAPE looping */
+wb(0x21);wb(0xFF);wb(0x0B);
+buf.push(0x4E,0x45,0x54,0x53,0x43,0x41,0x50,0x45,0x32,0x2E,0x30);
+wb(0x03);wb(0x01);w16(0);wb(0x00);
+/* Frames */
+for(var f=0;f<indexed.length;f++){
+wb(0x21);wb(0xF9);wb(0x04);wb(0x00);w16(delayCs);wb(0x00);wb(0x00);
+wb(0x2C);w16(0);w16(0);w16(w);w16(h);wb(0x00);
+var minCode=8;wb(minCode);
+var comp=lzwEncode(indexed[f],minCode);
+var pos=0;
+while(pos<comp.length){var chunk=Math.min(255,comp.length-pos);wb(chunk);for(var ci=0;ci<chunk;ci++)buf.push(comp[pos++]);}
+wb(0x00);
+}
+wb(0x3B);
+return new Uint8Array(buf);
 }
 
-function quantizeFrame(imgData, palette, w, h) {
-  var data = imgData.data, out = new Uint8Array(w * h);
-  // Build lookup cache
-  var cache = {};
-  for (var i = 0; i < w * h; i++) {
-    var idx = i * 4;
-    var r = data[idx], g = data[idx+1], b = data[idx+2];
-    var key = (r>>3<<16)|(g>>3<<8)|(b>>3);
-    if (cache[key] !== undefined) { out[i] = cache[key]; continue; }
-    // Find nearest color
-    var best = 0, bestD = 999999;
-    for (var j = 0; j < palette.length; j++) {
-      var dr = r-palette[j][0], dg = g-palette[j][1], db = b-palette[j][2];
-      var dd = dr*dr + dg*dg + db*db;
-      if (dd < bestD) { bestD = dd; best = j; }
-    }
-    cache[key] = best;
-    out[i] = best;
-  }
-  return out;
+function lzwEncode(data,minCodeSize){
+var clearCode=1<<minCodeSize,eoiCode=clearCode+1;
+var codeSize=minCodeSize+1,nextCode=eoiCode+1,maxCode=1<<codeSize;
+var dict={},output=[],bitBuf=0,bitPos=0;
+function emit(code){bitBuf|=(code<<bitPos);bitPos+=codeSize;while(bitPos>=8){output.push(bitBuf&0xFF);bitBuf>>=8;bitPos-=8;}}
+function resetDict(){dict={};codeSize=minCodeSize+1;nextCode=eoiCode+1;maxCode=1<<codeSize;for(var i=0;i<clearCode;i++)dict[String(i)]=i;}
+emit(clearCode);resetDict();
+var cur=String(data[0]);
+for(var i=1;i<data.length;i++){
+var next=String(data[i]),key=cur+’,’+next;
+if(dict[key]!==undefined){cur=key;}
+else{emit(dict[cur]);if(nextCode<4096){dict[key]=nextCode++;if(nextCode>maxCode&&codeSize<12){codeSize++;maxCode=1<<codeSize;}}else{emit(clearCode);resetDict();}cur=next;}
+}
+emit(dict[cur]);emit(eoiCode);if(bitPos>0)output.push(bitBuf&0xFF);
+return output;
 }
 
-function lzwEncode(data, minCodeSize) {
-  var clearCode = 1 << minCodeSize;
-  var eoiCode = clearCode + 1;
-  var codeSize = minCodeSize + 1;
-  var nextCode = eoiCode + 1;
-  var maxCode = 1 << codeSize;
-  var dict = {};
-  var output = [];
-  var bitBuf = 0, bitPos = 0;
-
-  function emit(code) {
-    bitBuf |= (code << bitPos);
-    bitPos += codeSize;
-    while (bitPos >= 8) {
-      output.push(bitBuf & 0xFF);
-      bitBuf >>= 8;
-      bitPos -= 8;
-    }
-  }
-
-  function resetDict() {
-    dict = {};
-    codeSize = minCodeSize + 1;
-    nextCode = eoiCode + 1;
-    maxCode = 1 << codeSize;
-    for (var i = 0; i < clearCode; i++) dict[String(i)] = i;
-  }
-
-  emit(clearCode);
-  resetDict();
-
-  var cur = String(data[0]);
-  for (var i = 1; i < data.length; i++) {
-    var next = String(data[i]);
-    var key = cur + ',' + next;
-    if (dict[key] !== undefined) {
-      cur = key;
-    } else {
-      emit(dict[cur]);
-      if (nextCode < 4096) {
-        dict[key] = nextCode++;
-        if (nextCode > maxCode && codeSize < 12) {
-          codeSize++;
-          maxCode = 1 << codeSize;
-        }
-      } else {
-        emit(clearCode);
-        resetDict();
-      }
-      cur = next;
-    }
-  }
-  emit(dict[cur]);
-  emit(eoiCode);
-  if (bitPos > 0) output.push(bitBuf & 0xFF);
-
-  return output;
-}
-
-// Modal controls
-window.closeModal = function() {
-  document.getElementById('modalBg').classList.remove('open');
-  document.getElementById('prog').className = 'prog';
-};
-document.getElementById('expBtn').addEventListener('click', function(e) {
-  e.stopPropagation();
-  document.getElementById('modalBg').classList.add('open');
-});
-document.getElementById('modalBg').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
-});
-
+/* Modal */
+window.closeModal=function(){document.getElementById(‘mbg’).classList.remove(‘open’);var p=document.getElementById(‘prg’);p.className=‘prg’;p.textContent=’’;};
+document.getElementById(‘expBtn’).addEventListener(‘click’,function(e){e.stopPropagation();document.getElementById(‘mbg’).classList.add(‘open’);});
+document.getElementById(‘mbg’).addEventListener(‘click’,function(e){if(e.target===this)closeModal();});
 })();
 </script>
 
