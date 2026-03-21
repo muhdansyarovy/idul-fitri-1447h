@@ -12,7 +12,7 @@
 html,body{height:100%;overflow:hidden}body{background:#FAFAF7;display:flex;align-items:center;justify-content:center;min-height:100vh;min-height:100dvh;font-family:'Cormorant Garamond',serif;padding:0;margin:0}
 .poster{width:100%;max-width:540px;min-height:100vh;min-height:100dvh;background:#FAFAF7;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px 40px;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent}
 .poster>*{position:relative;z-index:2}.poster{padding-top:max(44px,env(safe-area-inset-top,44px));padding-bottom:max(32px,env(safe-area-inset-bottom,32px))}
-#BC{position:absolute;inset:0;z-index:0;pointer-events:none;width:100%;height:100%}
+#BC{position:absolute;inset:0;z-index:0;pointer-events:none;width:100%;height:100%;transition:opacity 0.8s}
 .fb{position:absolute;inset:16px;border:0.5px solid var(--a1);opacity:0.15;pointer-events:none;z-index:1}
 .cn{position:absolute;width:20px;height:20px;z-index:3}.cn::before,.cn::after{content:'';position:absolute;background:var(--a1);opacity:0.3;transition:background .8s}
 .c1{top:14px;left:14px}.c1::before{width:20px;height:.5px}.c1::after{width:.5px;height:20px}
@@ -42,6 +42,7 @@ html,body{height:100%;overflow:hidden}body{background:#FAFAF7;display:flex;align
 @keyframes fi{from{opacity:0}to{opacity:1}}
 .poster.zm .twc{transform:scale(2.0);margin-bottom:100px;margin-top:140px}
 .poster.zm .gt,.poster.zm .hy,.poster.zm .ba,.poster.zm .at,.poster.zm .ai,.poster.zm .sn,.poster.zm .ss,.poster.zm .th{opacity:0!important;pointer-events:none}
+.poster.zm #BC{opacity:0;transition:opacity 0.8s}
 .exp-btn{position:fixed;bottom:max(20px,env(safe-area-inset-bottom,0px));right:20px;width:48px;height:48px;border-radius:50%;background:#2C2C2C;color:#fff;border:none;font-size:20px;cursor:pointer;z-index:100;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,.15)}
 .mbg{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:none;align-items:center;justify-content:center}.mbg.open{display:flex}
 .mdl{background:#fff;border-radius:16px;padding:32px;width:320px;text-align:center}
@@ -153,10 +154,10 @@ var CUR_THEME=0;
     bigOrbs=[];bigArcs=[];
     /* Extended orbits covering entire poster height */
     var configs=[];
-    var startR=40, step=32, nBase=42;
+    var startR=232, step=32, nBase=42;
     /* ratio matches poster aspect for visual symmetry */
     var pRatio=0.42; /* horizontal ellipse like tawaf bird-eye view */
-    for(var ci=0;ci<22;ci++){
+    for(var ci=0;ci<16;ci++){
       var r=startR+step*ci;
       var np=Math.max(24, nBase-ci);
       configs.push({rx:r, ry:Math.round(r*pRatio), n:np, sp:0.0007/(1+ci*0.35), sz:Math.max(0.5,1.2-ci*0.03)});
@@ -334,7 +335,11 @@ var CUR_THEME=0;
     x.globalAlpha=1;
 
     // Orbit rings
-    /* orbit rings removed - drawn by background canvas */
+    /* orbit rings - drawn here so they zoom with Ka'bah */
+    for(var i=0;i<orbs.length;i++){
+      x.beginPath();x.ellipse(cx,cy,orbs[i].rx,orbs[i].ry,0,0,Math.PI*2);
+      x.strokeStyle=t.trail;x.globalAlpha=0.10;x.lineWidth=0.4;x.stroke();
+    }
     x.globalAlpha=1;
 
     // Back people
