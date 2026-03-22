@@ -679,7 +679,7 @@ var CUR_THEME=0;
 </script>
 
 <script>
-// --- SCRIPT EXPORT (DIPERBAIKI UNTUK MENGGUNAKAN WARNA SAAT INI) ---
+// --- SCRIPT EXPORT (DIPERBAIKI UNTUK HD, SHADOW, DAN POSISI TEKS LEBIH RENDAH) ---
 (function(){
   var EB=document.getElementById('EB'),MB=document.getElementById('MB'),MCL=document.getElementById('MCL'),PRG=document.getElementById('PRG');
   var TC=document.getElementById('TC');
@@ -767,27 +767,28 @@ var CUR_THEME=0;
         
         ex.restore(); 
         
-        var textStart = twY + twH; 
+        // --- MENGGAMBAR TEKS (DITURUNKAN POSISINYA KE BATAS MERAH) ---
+        var textTop = twY + twH + 150 * sc; // Menambah offset awal agar teks turun drastis
         ex.textAlign = 'center';
         
-        var y1 = textStart + 45 * sc;
+        var y1 = textTop + 50 * sc; // Menambah jarak antar baris agar lebih lega
         ex.fillStyle = colorTm;
         ex.font = '600 ' + Math.round(13 * sc) + 'px Cormorant Garamond';
         ex.shadowColor = colorShadowLight; ex.shadowOffsetX = 1.5 * sc; ex.shadowOffsetY = 1.5 * sc; ex.shadowBlur = 0;
         ex.fillText('S E L A M A T   H A R I   R A Y A', ew / 2, y1);
         
-        var y2 = y1 + 60 * sc; 
+        var y2 = y1 + 90 * sc; // Menambah jarak ke judul besar
         ex.font = '700 ' + Math.round(72 * sc) + 'px Amiri';
         ex.shadowColor = colorShadowLight; ex.shadowOffsetX = 1.5 * sc; ex.shadowOffsetY = 1.5 * sc;
         ex.fillText('Idul Fitri', ew / 2, y2);
         
-        var y3 = y2 + 50 * sc; 
+        var y3 = y2 + 65 * sc; // Menurunkan teks 1447 H ke dekat batas merah
         ex.fillStyle = colorA1;
         ex.shadowColor = 'transparent'; 
         ex.font = '600 ' + Math.round(17 * sc) + 'px Cormorant Garamond';
         ex.fillText('1  4  4  7   H', ew / 2, y3);
         
-        var y4 = y3 + 25 * sc;
+        var y4 = y3 + 35 * sc; // Jarak pemisah diturunkan
         ex.shadowColor = 'transparent';
         ex.strokeStyle = colorA2;
         ex.globalAlpha = 0.5;
@@ -797,20 +798,20 @@ var CUR_THEME=0;
         ex.globalAlpha = 0.7; ex.fillStyle = colorA2;
         ex.beginPath(); ex.arc(ew / 2, y4, 5 * sc, 0, Math.PI * 2); ex.fill(); ex.globalAlpha = 1;
         
-        var y5 = y4 + 45 * sc;
+        var y5 = y4 + 50 * sc; // Menurunkan ayat Arab
         ex.fillStyle = colorTm;
         ex.font = '400 ' + Math.round(26 * sc) + 'px Amiri';
         ex.shadowColor = colorShadowLight; ex.shadowOffsetX = 1.5 * sc; ex.shadowOffsetY = 1.5 * sc;
         ex.fillText('\u062A\u064E\u0642\u064E\u0628\u0651\u064E\u0644\u064E \u0627\u0644\u0644\u0651\u064E\u0647\u064F \u0645\u0650\u0646\u0651\u064E\u0627 \u0648\u064E\u0645\u0650\u0646\u0652\u0643\u064F\u0645\u0652', ew / 2, y5);
         
-        var y6 = y5 + 35 * sc;
+        var y6 = y5 + 40 * sc; // Menurunkan arti ayat
         ex.fillStyle = colorTs;
         ex.shadowColor = 'transparent'; 
         ex.font = 'italic 500 ' + Math.round(12.5 * sc) + 'px Cormorant Garamond';
         ex.fillText('"Semoga Allah menerima amalan', ew / 2, y6);
         ex.fillText('dari kami dan darimu sekalian"', ew / 2, y6 + 20 * sc);
         
-        var y7 = y6 + 65 * sc;
+        var y7 = y6 + 95 * sc; // Menurunkan nama keluarga ke bagian paling bawah
         ex.fillStyle = colorTm;
         ex.globalAlpha = 0.85;
         ex.font = '600 ' + Math.round(14 * sc) + 'px Cormorant Garamond';
@@ -867,6 +868,7 @@ var CUR_THEME=0;
       var twX = expKcx - twW / 2;
       var twY = expKcy - twH / 2;
       
+      // MENGGAMBAR LUBANG NEUMORPHISM (INSET SHADOW) UNTUK GIF
       var sc = gw / 540; 
       
       gx.save();
@@ -898,28 +900,29 @@ var CUR_THEME=0;
       
       gx.restore(); 
       
-      var textStart = twY + twH; 
+      // --- MENGGAMBAR TEKS UNTUK GIF (MENYAMAKAN POSISI DENGAN PNG) ---
+      var textTop = twY + twH + 150 * sc; 
       gx.textAlign = 'center';
       
-      var y1 = textStart + 45 * sc;
+      var tY = textTop + 50 * sc;
       gx.fillStyle = colorTm;
       gx.font = '600 ' + Math.round(13 * sc) + 'px Cormorant Garamond';
       gx.shadowColor = colorShadowLight; gx.shadowOffsetX = 1.5 * sc; gx.shadowOffsetY = 1.5 * sc; gx.shadowBlur = 0;
-      gx.fillText('S E L A M A T   H A R I   R A Y A', gw / 2, y1);
+      gx.fillText('S E L A M A T   H A R I   R A Y A', gw / 2, tY);
       
-      var y2 = y1 + 60 * sc; 
+      var y2 = tY + 90 * sc; 
       gx.font = '700 ' + Math.round(72 * sc) + 'px Amiri';
       gx.shadowColor = colorShadowLight; gx.shadowOffsetX = 1.5 * sc; gx.shadowOffsetY = 1.5 * sc;
       gx.fillText('Idul Fitri', gw / 2, y2);
       
-      var y3 = y2 + 50 * sc; 
+      var y3 = y2 + 65 * sc; 
       gx.fillStyle = colorA1;
       gx.shadowColor = 'transparent'; 
       gx.font = '600 ' + Math.round(17 * sc) + 'px Cormorant Garamond';
       gx.fillText('1  4  4  7   H', gw / 2, y3);
       
       var y4 = y3 + 25 * sc;
-      gx.shadowColor = 'transparent';
+      gx.shadowColor = 'transparent'; gx.shadowBlur = 0;
       gx.strokeStyle = colorA2;
       gx.globalAlpha = 0.5;
       gx.lineWidth = sc;
@@ -931,7 +934,7 @@ var CUR_THEME=0;
       var y5 = y4 + 45 * sc;
       gx.fillStyle = colorTm;
       gx.font = '400 ' + Math.round(26 * sc) + 'px Amiri';
-      gx.shadowColor = colorShadowLight; gx.shadowOffsetX = 1.5 * sc; gx.shadowOffsetY = 1.5 * sc;
+      gx.shadowColor = colorShadowLight; gx.shadowOffsetX = 1.5 * sc; gx.shadowOffsetY = 1.5 * sc; gx.shadowBlur = 0;
       gx.fillText('\u062A\u064E\u0642\u064E\u0628\u0651\u064E\u0644\u064E \u0627\u0644\u0644\u0651\u064E\u0647\u064F \u0645\u0650\u0646\u0651\u064E\u0627 \u0648\u064E\u0645\u0650\u0646\u0652\u0643\u064F\u0645\u0652', gw / 2, y5);
       
       var y6 = y5 + 35 * sc;
@@ -941,7 +944,7 @@ var CUR_THEME=0;
       gx.fillText('"Semoga Allah menerima amalan', gw / 2, y6);
       gx.fillText('dari kami dan darimu sekalian"', gw / 2, y6 + 20 * sc);
       
-      var y7 = y6 + 65 * sc;
+      var y7 = y6 + 95 * sc;
       gx.fillStyle = colorTm;
       gx.globalAlpha = 0.85;
       gx.font = '600 ' + Math.round(14 * sc) + 'px Cormorant Garamond';
