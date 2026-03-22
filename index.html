@@ -70,12 +70,12 @@ body{
 .c3{bottom:20px;left:20px}.c3::before{bottom:0;left:0;width:20px;height:.5px}.c3::after{bottom:0;left:0;width:.5px;height:20px}
 .c4{bottom:20px;right:20px}.c4::before{bottom:0;right:0;width:20px;height:.5px}.c4::after{bottom:0;right:0;width:.5px;height:20px}
 
-/* Container Ka'bah */
+/* Container Ka'bah (DIPERBAIKI AGAR SELALU KEPOTONG SAMA SEPERTI DESKTOP) */
 .twc{
-  width: 185.185%; 
+  width: 185.185%; /* Lebar selalu 185% dari poster agar sisa sisinya terpotong */
   max-width: 1000px;
-  aspect-ratio: 1000 / 390; 
-  flex-shrink: 0; 
+  aspect-ratio: 1000 / 390; /* Memaksa proporsi tinggi otomatis pas */
+  flex-shrink: 0; /* Mencegah gepeng di mobile */
   margin-bottom: 22px;
   position: relative;
   animation: fi 1.5s ease-out both;
@@ -273,7 +273,6 @@ body{
 @media(max-width:640px){
   body{padding:0}
   .poster{width:100%;min-height:100vh;min-height:100dvh;padding:28px 18px;border-radius:0; box-shadow: none;}
-  .twc{width:100vw;height:39vw;max-width:1000px;max-height:390px} 
   .kt{width:80vw;max-width:340px}
   .kt h1 { font-size: 56px; } 
   .at{font-size:22px}
@@ -369,10 +368,10 @@ var CUR_THEME=0;
   function initBigOrbs(){
     bigOrbs=[];bigArcs=[];
     var configs=[];
-    var startR=180; 
-    var step=30;    
-    var nBase=42;
-    var pRatio=0.39; 
+    var startR = 180 * drawScale; 
+    var step = 30 * drawScale;    
+    var nBase = 42;
+    var pRatio = 0.39; 
     
     for(var ci=0;ci<8;ci++){ 
       var r=startR+step*ci;
@@ -680,7 +679,7 @@ var CUR_THEME=0;
 </script>
 
 <script>
-// --- SCRIPT EXPORT (DIPERBAIKI: POSISI TEKS DITRANSLASI KE ATAS) ---
+// --- SCRIPT EXPORT (DIPERBAIKI UNTUK HD, SHADOW, DAN POSISI TEKS LEBIH RENDAH) ---
 (function(){
   var EB=document.getElementById('EB'),MB=document.getElementById('MB'),MCL=document.getElementById('MCL'),PRG=document.getElementById('PRG');
   var TC=document.getElementById('TC');
@@ -768,30 +767,28 @@ var CUR_THEME=0;
         
         ex.restore(); 
         
-        // --- MENGGAMBAR TEKS (DITAIKKAN KE ATAS) ---
-        // textTop dikurangi secara signifikan agar semua elemen naik mendekati orbit Ka'bah
-        var textTop = twY + twH - 40 * sc; 
-        
+        // --- MENGGAMBAR TEKS (DITURUNKAN POSISINYA KE BATAS MERAH) ---
+        var textTop = twY + twH + 150 * sc; // Menambah offset awal agar teks turun drastis
         ex.textAlign = 'center';
         
-        var y1 = textTop + 45 * sc;
+        var y1 = textTop + 50 * sc; // Menambah jarak antar baris agar lebih lega
         ex.fillStyle = colorTm;
         ex.font = '600 ' + Math.round(13 * sc) + 'px Cormorant Garamond';
         ex.shadowColor = colorShadowLight; ex.shadowOffsetX = 1.5 * sc; ex.shadowOffsetY = 1.5 * sc; ex.shadowBlur = 0;
         ex.fillText('S E L A M A T   H A R I   R A Y A', ew / 2, y1);
         
-        var y2 = y1 + 90 * sc; 
+        var y2 = y1 + 90 * sc; // Menambah jarak ke judul besar
         ex.font = '700 ' + Math.round(72 * sc) + 'px Amiri';
         ex.shadowColor = colorShadowLight; ex.shadowOffsetX = 1.5 * sc; ex.shadowOffsetY = 1.5 * sc;
         ex.fillText('Idul Fitri', ew / 2, y2);
         
-        var y3 = y2 + 65 * sc; 
+        var y3 = y2 + 65 * sc; // Menurunkan teks 1447 H ke dekat batas merah
         ex.fillStyle = colorA1;
         ex.shadowColor = 'transparent'; 
         ex.font = '600 ' + Math.round(17 * sc) + 'px Cormorant Garamond';
         ex.fillText('1  4  4  7   H', ew / 2, y3);
         
-        var y4 = y3 + 35 * sc;
+        var y4 = y3 + 35 * sc; // Jarak pemisah diturunkan
         ex.shadowColor = 'transparent';
         ex.strokeStyle = colorA2;
         ex.globalAlpha = 0.5;
@@ -801,20 +798,20 @@ var CUR_THEME=0;
         ex.globalAlpha = 0.7; ex.fillStyle = colorA2;
         ex.beginPath(); ex.arc(ew / 2, y4, 5 * sc, 0, Math.PI * 2); ex.fill(); ex.globalAlpha = 1;
         
-        var y5 = y4 + 50 * sc;
+        var y5 = y4 + 50 * sc; // Menurunkan ayat Arab
         ex.fillStyle = colorTm;
         ex.font = '400 ' + Math.round(26 * sc) + 'px Amiri';
         ex.shadowColor = colorShadowLight; ex.shadowOffsetX = 1.5 * sc; ex.shadowOffsetY = 1.5 * sc;
         ex.fillText('\u062A\u064E\u0642\u064E\u0628\u0651\u064E\u0644\u064E \u0627\u0644\u0644\u0651\u064E\u0647\u064F \u0645\u0650\u0646\u0651\u064E\u0627 \u0648\u064E\u0645\u0650\u0646\u0652\u0643\u064F\u0645\u0652', ew / 2, y5);
         
-        var y6 = y5 + 40 * sc;
+        var y6 = y5 + 40 * sc; // Menurunkan arti ayat
         ex.fillStyle = colorTs;
         ex.shadowColor = 'transparent'; 
         ex.font = 'italic 500 ' + Math.round(12.5 * sc) + 'px Cormorant Garamond';
         ex.fillText('"Semoga Allah menerima amalan', ew / 2, y6);
         ex.fillText('dari kami dan darimu sekalian"', ew / 2, y6 + 20 * sc);
         
-        var y7 = y6 + 95 * sc;
+        var y7 = y6 + 95 * sc; // Menurunkan nama keluarga ke bagian paling bawah
         ex.fillStyle = colorTm;
         ex.globalAlpha = 0.85;
         ex.font = '600 ' + Math.round(14 * sc) + 'px Cormorant Garamond';
@@ -871,6 +868,7 @@ var CUR_THEME=0;
       var twX = expKcx - twW / 2;
       var twY = expKcy - twH / 2;
       
+      // MENGGAMBAR LUBANG NEUMORPHISM (INSET SHADOW) UNTUK GIF
       var sc = gw / 540; 
       
       gx.save();
@@ -903,12 +901,10 @@ var CUR_THEME=0;
       gx.restore(); 
       
       // --- MENGGAMBAR TEKS UNTUK GIF (MENYAMAKAN POSISI DENGAN PNG) ---
-      // textTop dikurangi secara signifikan agar semua elemen naik mendekati orbit Ka'bah
-      var textTop = twY + twH - 40 * sc; 
-      
+      var textTop = twY + twH + 150 * sc; 
       gx.textAlign = 'center';
       
-      var tY = textTop + 45 * sc;
+      var tY = textTop + 50 * sc;
       gx.fillStyle = colorTm;
       gx.font = '600 ' + Math.round(13 * sc) + 'px Cormorant Garamond';
       gx.shadowColor = colorShadowLight; gx.shadowOffsetX = 1.5 * sc; gx.shadowOffsetY = 1.5 * sc; gx.shadowBlur = 0;
@@ -925,7 +921,7 @@ var CUR_THEME=0;
       gx.font = '600 ' + Math.round(17 * sc) + 'px Cormorant Garamond';
       gx.fillText('1  4  4  7   H', gw / 2, y3);
       
-      var y4 = y3 + 35 * sc;
+      var y4 = y3 + 25 * sc;
       gx.shadowColor = 'transparent'; gx.shadowBlur = 0;
       gx.strokeStyle = colorA2;
       gx.globalAlpha = 0.5;
@@ -935,13 +931,13 @@ var CUR_THEME=0;
       gx.globalAlpha = 0.7; gx.fillStyle = colorA2;
       gx.beginPath(); gx.arc(gw / 2, y4, 5 * sc, 0, Math.PI * 2); gx.fill(); gx.globalAlpha = 1;
       
-      var y5 = y4 + 50 * sc;
+      var y5 = y4 + 45 * sc;
       gx.fillStyle = colorTm;
       gx.font = '400 ' + Math.round(26 * sc) + 'px Amiri';
       gx.shadowColor = colorShadowLight; gx.shadowOffsetX = 1.5 * sc; gx.shadowOffsetY = 1.5 * sc; gx.shadowBlur = 0;
       gx.fillText('\u062A\u064E\u0642\u064E\u0628\u0651\u064E\u0644\u064E \u0627\u0644\u0644\u0651\u064E\u0647\u064F \u0645\u0650\u0646\u0651\u064E\u0627 \u0648\u064E\u0645\u0650\u0646\u0652\u0643\u064F\u0645\u0652', gw / 2, y5);
       
-      var y6 = y5 + 40 * sc;
+      var y6 = y5 + 35 * sc;
       gx.fillStyle = colorTs;
       gx.shadowColor = 'transparent'; 
       gx.font = 'italic 500 ' + Math.round(12.5 * sc) + 'px Cormorant Garamond';
