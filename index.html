@@ -10,14 +10,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  /* Variabel warna dasar untuk Neumorphism */
+  /* Variabel warna dasar untuk Neumorphism - Skema Warna Emas Baru */
   --bg-color: #E0E5EC;
   --shadow-light: #ffffff;
   --shadow-dark: #a3b1c6;
   
   --a1: #C4A96A;
   --a2: #8B9E7C;
-  --tm: #5C4A28;
+  --tm: #5C4A28; /* Warna teks utama gelap */
   --ts: #7A8B99; 
   --tl: #A3B1C6;
 }
@@ -70,7 +70,7 @@ body{
 .c3{bottom:20px;left:20px}.c3::before{bottom:0;left:0;width:20px;height:.5px}.c3::after{bottom:0;left:0;width:.5px;height:20px}
 .c4{bottom:20px;right:20px}.c4::before{bottom:0;right:0;width:20px;height:.5px}.c4::after{bottom:0;right:0;width:.5px;height:20px}
 
-/* Container Ka'bah */
+/* Container Ka'bah (Orbit 1000x390) */
 .twc{
   width:1000px;
   height:390px;
@@ -85,6 +85,7 @@ body{
 }
 #TC{width:100%;height:100%;display:block; border-radius: 50%;}
 
+/* Teks Selamat Hari Raya */
 .gt{
   font-size:13px;
   font-weight:600;
@@ -98,6 +99,7 @@ body{
   text-shadow: 1px 1px 0px var(--shadow-light);
 }
 
+/* Idul Fitri (Teks HTML Murni) */
 .kt{
   margin-bottom:8px;
   animation:fd 1.2s ease-out .5s both;
@@ -158,7 +160,7 @@ body{
 @keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fi{from{opacity:0}to{opacity:1}}
 
-/* HAPUS EFEK ZOOM UNTUK EXPORT - Gunakan proporsi orbit 1000x390 murni */
+/* HAPUS EFEK ZOOM - Gunakan proporsi murni */
 .poster.zm .twc{transform:scale(1); box-shadow: none; border-radius: 0; background: transparent;} 
 .poster.zm .gt,.poster.zm .hy,.poster.zm .ba,.poster.zm .at,.poster.zm .ai,.poster.zm .sn,.poster.zm .ss,.poster.zm .th{opacity:1!important;pointer-events:auto}
 .poster.zm #BC{opacity:1;transition:opacity 0.8s}
@@ -268,10 +270,20 @@ body{
   box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
 }
 
+/* === PERBAIKAN CSS MOBILE === */
 @media(max-width:640px){
   body{padding:0}
   .poster{width:100%;min-height:100vh;min-height:100dvh;padding:28px 18px;border-radius:0; box-shadow: none;}
-  .twc{width:100vw;height:39vw;max-width:1000px;max-height:390px} 
+  
+  /* Gunakan aspect-ratio agar proporsi tetap 1000x390 tanpa meluber ke pinggir layar */
+  .twc{
+    width: 100%; 
+    height: auto; 
+    aspect-ratio: 100 / 39; 
+    max-width: 1000px; 
+    max-height: 390px;
+  } 
+  
   .kt{width:80vw;max-width:340px}
   .kt h1 { font-size: 56px; } 
   .at{font-size:22px}
@@ -312,6 +324,7 @@ body{
 </div>
 
 <script>
+// HAPUS ARRAY TITLE_IMGS - Kita menggunakan teks HTML murni.
 var THEMES=[
 {name:'Gold & Sage',a1:'#C4A96A',a2:'#8B9E7C',tm:'#5C4A28',ts:'#9E8E7E',tl:'#C4B5A5',dots:'#3A3A3A',trail:'#9E8E7E',splat:'#4A4A4A',bd:'#C4A96A'},
 {name:'Ocean Teal',a1:'#2E8B8B',a2:'#5EAAA8',tm:'#0D4F4F',ts:'#3E8888',tl:'#8EBFBF',dots:'#2A5555',trail:'#5EAAA8',splat:'#3A6666',bd:'#5EAAA8'},
@@ -333,6 +346,7 @@ var CUR_THEME=0;
   var x=c.getContext('2d');
   var pw,ph,dots=[];
   var kcx,kcy; 
+  var drawScale = 1; // PERBAIKAN: Scale otomatis untuk Mobile
 
   var bigOrbs=[];
   var bigArcs=[];
@@ -343,11 +357,13 @@ var CUR_THEME=0;
     c.width=pw*d;c.height=ph*d;
     c.style.width=pw+'px';c.style.height=ph+'px';
     x.setTransform(d,0,0,d,0,0);
+    
     if(twc){
       var pr=p.getBoundingClientRect();
       var tr=twc.getBoundingClientRect();
       kcx=tr.left-pr.left+tr.width/2;
       kcy=tr.top-pr.top+tr.height/2;
+      drawScale = tr.width / 1000; // Menghitung rasio pengecilan berdasarkan layar
     }else{
       kcx=pw/2;kcy=ph*0.28;
     }
@@ -364,10 +380,10 @@ var CUR_THEME=0;
   function initBigOrbs(){
     bigOrbs=[];bigArcs=[];
     var configs=[];
-    var startR=180; 
-    var step=30;    
-    var nBase=42;
-    var pRatio=0.39; 
+    var startR = 180 * drawScale; // Skala ikut mengecil di HP
+    var step = 30 * drawScale;    
+    var nBase = 42;
+    var pRatio = 0.39; 
     
     for(var ci=0;ci<8;ci++){ 
       var r=startR+step*ci;
@@ -475,6 +491,7 @@ var CUR_THEME=0;
   
   var scaleX = 1.4; 
   var scaleY = 1.4; 
+  var drawScale = 1; // PERBAIKAN: Skala untuk Mobile
 
   function resize(){
     var d=window.devicePixelRatio||1;
@@ -483,37 +500,46 @@ var CUR_THEME=0;
     tc.style.width=W+'px';tc.style.height=H+'px';
     x.setTransform(d,0,0,d,0,0);
     cx=W/2;cy=H/2;
+    
+    if (W > 0) { drawScale = W / 1000; }
+    
     makeSplat();
+    initOrbs(); // Panggil saat resize agar radius menyesuaikan
   }
 
   var sp=[];
   function makeSplat(){
     sp=[];
-    for(var i=0;i<150;i++){var a=Math.random()*Math.PI*2,d=40+Math.random()*220;sp.push({x:cx+Math.cos(a)*d*(0.7+Math.random()*0.7),y:cy+Math.sin(a)*d*(0.35+Math.random()*0.35),r:0.5+Math.random()*3,o:0.05+Math.random()*0.28});}
-    for(var i=0;i<30;i++){var a=Math.random()*Math.PI*2,d=120+Math.random()*190;sp.push({x:cx+Math.cos(a)*d*(0.9+Math.random()*0.5),y:cy+Math.sin(a)*d*(0.4+Math.random()*0.3),r:2.5+Math.random()*5,o:0.02+Math.random()*0.09});}
+    for(var i=0;i<150;i++){var a=Math.random()*Math.PI*2,d=(40+Math.random()*220)*drawScale;sp.push({x:cx+Math.cos(a)*d*(0.7+Math.random()*0.7),y:cy+Math.sin(a)*d*(0.35+Math.random()*0.35),r:0.5+Math.random()*3,o:0.05+Math.random()*0.28});}
+    for(var i=0;i<30;i++){var a=Math.random()*Math.PI*2,d=(120+Math.random()*190)*drawScale;sp.push({x:cx+Math.cos(a)*d*(0.9+Math.random()*0.5),y:cy+Math.sin(a)*d*(0.4+Math.random()*0.3),r:2.5+Math.random()*5,o:0.02+Math.random()*0.09});}
   }
 
-  var oc=[
-    {rx:60, ry:23, n:14, sp:0.003, sz:1.5},
-    {rx:100, ry:39, n:20, sp:0.0024, sz:1.8},
-    {rx:140,ry:54, n:28, sp:0.0018, sz:2.0},
-    {rx:180,ry:70, n:34, sp:0.0013, sz:1.9}
-  ];
-  var orbs=[],arcs=[];
-
-  for(var oi=0;oi<oc.length;oi++){
-    var c=oc[oi],pp=[];
-    for(var pi=0;pi<c.n;pi++) pp.push({a:(Math.PI*2/c.n)*pi+Math.random()*0.25,f:(Math.random()-0.5)*1.5,s:0.88+Math.random()*0.24,z:c.sz*(0.75+Math.random()*0.5)});
-    orbs.push({rx:c.rx,ry:c.ry,sp:c.sp,p:pp});
-    for(var j=0;j<2+Math.floor(Math.random()*2);j++) arcs.push({rx:c.rx+(Math.random()-0.5)*5,ry:c.ry+(Math.random()-0.5)*3,s:Math.random()*Math.PI*2,w:1.5+Math.random()*3.5,l:0.3+Math.random()*1.5,o:0.04+Math.random()*0.09,d:Math.random()>0.6});
+  var oc=[], orbs=[], arcs=[];
+  function initOrbs() {
+    oc=[
+      {rx:60 * drawScale, ry:23 * drawScale, n:14, sp:0.003, sz:1.5},
+      {rx:100 * drawScale, ry:39 * drawScale, n:20, sp:0.0024, sz:1.8},
+      {rx:140 * drawScale, ry:54 * drawScale, n:28, sp:0.0018, sz:2.0},
+      {rx:180 * drawScale, ry:70 * drawScale, n:34, sp:0.0013, sz:1.9}
+    ];
+    orbs=[];arcs=[];
+    for(var oi=0;oi<oc.length;oi++){
+      var c=oc[oi],pp=[];
+      for(var pi=0;pi<c.n;pi++) pp.push({a:(Math.PI*2/c.n)*pi+Math.random()*0.25,f:(Math.random()-0.5)*1.5,s:0.88+Math.random()*0.24,z:c.sz*(0.75+Math.random()*0.5)});
+      orbs.push({rx:c.rx,ry:c.ry,sp:c.sp,p:pp});
+      for(var j=0;j<2+Math.floor(Math.random()*2);j++) arcs.push({rx:c.rx+(Math.random()-0.5)*5,ry:c.ry+(Math.random()-0.5)*3,s:Math.random()*Math.PI*2,w:1.5+Math.random()*3.5,l:0.3+Math.random()*1.5,o:0.04+Math.random()*0.09,d:Math.random()>0.6});
+    }
   }
 
   function drawKaaba(){
-    var w = 40 * scaleX; 
-    var h = 60 * scaleY; 
+    var sX = scaleX * drawScale;
+    var sY = scaleY * drawScale;
+      
+    var w = 30 * sX; 
+    var h = 60 * sY; 
     var kx = cx;
-    var ky = cy - (6 * scaleY);
-    var tilt = 16 * scaleY; 
+    var ky = cy - (6 * sY);
+    var tilt = 16 * sY; 
     
     x.save();
     
@@ -544,8 +570,8 @@ var CUR_THEME=0;
     x.closePath();
     x.fill();
     
-    var bH = 4.5 * scaleY; 
-    var bY = -22 * scaleY; 
+    var bH = 4.5 * sY; 
+    var bY = -22 * sY; 
     
     x.fillStyle = KA_BAND;
     x.beginPath();
@@ -565,10 +591,10 @@ var CUR_THEME=0;
     x.closePath();
     x.fill();
     
-    var dW = 6.5 * scaleX;
-    var dH = 13 * scaleY;
-    var dX = 7 * scaleX; 
-    var dY = 3 * scaleY; 
+    var dW = 6.5 * sX;
+    var dH = 13 * sY;
+    var dX = 7 * sX; 
+    var dY = 3 * sY; 
     
     x.fillStyle = '#A8905A';
     x.beginPath();
@@ -624,9 +650,9 @@ var CUR_THEME=0;
     }
     x.globalAlpha=1;
 
-    var g=x.createRadialGradient(cx,cy,10,cx,cy,80); 
+    var g=x.createRadialGradient(cx,cy,10 * drawScale,cx,cy,80 * drawScale); 
     g.addColorStop(0,KA_BAND+'0D');g.addColorStop(1,KA_BAND+'00');
-    x.fillStyle=g;x.beginPath();x.ellipse(cx,cy,80,45,0,0,Math.PI*2);x.fill(); 
+    x.fillStyle=g;x.beginPath();x.ellipse(cx,cy,80 * drawScale,45 * drawScale,0,0,Math.PI*2);x.fill(); 
 
     requestAnimationFrame(draw);
   }
@@ -665,7 +691,7 @@ var CUR_THEME=0;
 </script>
 
 <script>
-// --- SCRIPT EXPORT ---
+// --- SCRIPT EXPORT (DIPERBAIKI UNTUK HD & SHADOW) ---
 (function(){
   var EB=document.getElementById('EB'),MB=document.getElementById('MB'),MCL=document.getElementById('MCL'),PRG=document.getElementById('PRG');
   var TC=document.getElementById('TC');
@@ -686,7 +712,6 @@ var CUR_THEME=0;
         var ew=1440,eh=3120,ec=document.createElement('canvas');ec.width=ew;ec.height=eh;
         var ex=ec.getContext('2d');
         
-        // --- AMBIL WARNA DARI CSS SAAT INI UNTUK EXPORT ---
         var p = document.getElementById('P');
         var colorTm = getComputedStyle(p).getPropertyValue('--tm').trim();
         var colorA1 = getComputedStyle(p).getPropertyValue('--a1').trim();
@@ -723,19 +748,16 @@ var CUR_THEME=0;
         var twX = expKcx - twW / 2;
         var twY = expKcy - twH / 2;
         
-        // --- MENGGAMBAR LUBANG NEUMORPHISM DI CANVAS EXPORT ---
-        var sc = ew/540; // Konstanta skala (1440 / 540 = 2.666)
+        // MENGGAMBAR LUBANG NEUMORPHISM (INSET SHADOW) DI CANVAS HD
+        var sc = ew/540; 
         
         ex.save();
-        // 1. Buat clipping path untuk membatasi Ka'bah agar tidak keluar dari lingkaran
         ex.beginPath();
         ex.ellipse(expKcx, expKcy, twW / 2, twH / 2, 0, 0, Math.PI * 2);
         ex.clip();
         
-        // 2. Gambar Ka'bah (sekarang dibatasi oleh clipping path)
         ex.drawImage(TC, twX, twY, twW, twH);
         
-        // 3. Gambar inner shadow gelap (kiri atas)
         ex.beginPath();
         ex.ellipse(expKcx, expKcy, twW / 2 + 8 * sc, twH / 2 + 8 * sc, 0, 0, Math.PI * 2);
         ex.lineWidth = 16 * sc;
@@ -746,7 +768,6 @@ var CUR_THEME=0;
         ex.shadowOffsetY = 5 * sc;
         ex.stroke();
         
-        // 4. Gambar inner shadow terang (kanan bawah)
         ex.beginPath();
         ex.ellipse(expKcx, expKcy, twW / 2 + 8 * sc, twH / 2 + 8 * sc, 0, 0, Math.PI * 2);
         ex.lineWidth = 16 * sc;
@@ -757,10 +778,9 @@ var CUR_THEME=0;
         ex.shadowOffsetY = -5 * sc;
         ex.stroke();
         
-        ex.restore(); // Hapus clipping mask
+        ex.restore(); 
         
-        // --- MENGGAMBAR TEKS ---
-        var textStart = twY + twH; // Mulai di bawah kontainer Ka'bah
+        var textStart = twY + twH; 
         ex.textAlign = 'center';
         
         var y1 = textStart + 45 * sc;
@@ -860,7 +880,7 @@ var CUR_THEME=0;
       var twX = expKcx - twW / 2;
       var twY = expKcy - twH / 2;
       
-      // --- MENGGAMBAR LUBANG NEUMORPHISM UNTUK GIF ---
+      // MENGGAMBAR LUBANG NEUMORPHISM (INSET SHADOW) UNTUK GIF
       var sc = gw / 540; 
       
       gx.save();
